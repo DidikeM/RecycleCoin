@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using RecycleCoin.Entities.Abstract;
 
 namespace RecycleCoin.Entities.Concrete.EntityFramework;
 
 [Table("user")]
 [Index("Username", "Email", Name = "User_username_email_key", IsUnique = true)]
-public partial class User
+public partial class User : IEntity
 {
     [Key]
     [Column("id")]

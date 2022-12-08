@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RecycleCoin.Entities.Concrete.EntityFramework;
 
-public partial class TestContext : DbContext
+public partial class RecycleCoinContext : DbContext
 {
-    public TestContext()
+    public RecycleCoinContext()
     {
     }
 
-    public TestContext(DbContextOptions<TestContext> options)
+    public RecycleCoinContext(DbContextOptions<RecycleCoinContext> options)
         : base(options)
     {
     }

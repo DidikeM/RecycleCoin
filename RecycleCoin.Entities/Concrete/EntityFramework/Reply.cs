@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using RecycleCoin.Entities.Abstract;
 
 namespace RecycleCoin.Entities.Concrete.EntityFramework;
 
 [Table("reply")]
-public partial class Reply
+public partial class Reply : IEntity
 {
     [Key]
     [Column("id")]

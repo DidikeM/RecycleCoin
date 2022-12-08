@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using RecycleCoin.Entities.Abstract;
 
 namespace RecycleCoin.Entities.Concrete.EntityFramework;
 
 [Table("customer")]
-public partial class Customer
+public partial class Customer : IEntity
 {
     [Key]
     [Column("id")]

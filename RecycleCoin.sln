@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleCoin.WebUI", "RecycleCoin.WebUI\RecycleCoin.WebUI.csproj", "{F2F1188D-5FF7-4301-B857-468E939E21CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecycleCoin.WebUI", "RecycleCoin.WebUI\RecycleCoin.WebUI.csproj", "{F2F1188D-5FF7-4301-B857-468E939E21CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleCoin.Business", "RecycleCoin.Business\RecycleCoin.Business.csproj", "{676EF54D-24B1-42AF-A8C1-732F87F96184}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecycleCoin.Business", "RecycleCoin.Business\RecycleCoin.Business.csproj", "{676EF54D-24B1-42AF-A8C1-732F87F96184}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleCoin.DataAccess", "RecycleCoin.DataAccess\RecycleCoin.DataAccess.csproj", "{76ECAF24-F8AD-4C2C-AD8A-CAF715B6FA30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecycleCoin.DataAccess", "RecycleCoin.DataAccess\RecycleCoin.DataAccess.csproj", "{76ECAF24-F8AD-4C2C-AD8A-CAF715B6FA30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleCoin.Entities", "RecycleCoin.Entities\RecycleCoin.Entities.csproj", "{5D26DE99-1056-4094-9804-12BE0E5A84EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecycleCoin.Entities", "RecycleCoin.Entities\RecycleCoin.Entities.csproj", "{5D26DE99-1056-4094-9804-12BE0E5A84EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
