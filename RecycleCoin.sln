@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleCoin.WebUI", "RecycleCoin.WebUI\RecycleCoin.WebUI.csproj", "{F2F1188D-5FF7-4301-B857-468E939E21CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleCoin.Business", "RecycleCoin.Business\RecycleCoin.Business.csproj", "{676EF54D-24B1-42AF-A8C1-732F87F96184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleCoin.DataAccess", "RecycleCoin.DataAccess\RecycleCoin.DataAccess.csproj", "{76ECAF24-F8AD-4C2C-AD8A-CAF715B6FA30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleCoin.Entities", "RecycleCoin.Entities\RecycleCoin.Entities.csproj", "{5D26DE99-1056-4094-9804-12BE0E5A84EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2F1188D-5FF7-4301-B857-468E939E21CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2F1188D-5FF7-4301-B857-468E939E21CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2F1188D-5FF7-4301-B857-468E939E21CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2F1188D-5FF7-4301-B857-468E939E21CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{676EF54D-24B1-42AF-A8C1-732F87F96184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{676EF54D-24B1-42AF-A8C1-732F87F96184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{676EF54D-24B1-42AF-A8C1-732F87F96184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{676EF54D-24B1-42AF-A8C1-732F87F96184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76ECAF24-F8AD-4C2C-AD8A-CAF715B6FA30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76ECAF24-F8AD-4C2C-AD8A-CAF715B6FA30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76ECAF24-F8AD-4C2C-AD8A-CAF715B6FA30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76ECAF24-F8AD-4C2C-AD8A-CAF715B6FA30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D26DE99-1056-4094-9804-12BE0E5A84EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D26DE99-1056-4094-9804-12BE0E5A84EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D26DE99-1056-4094-9804-12BE0E5A84EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D26DE99-1056-4094-9804-12BE0E5A84EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63A76DF3-2AC9-47C6-A711-2B0E09FE90F9}
+	EndGlobalSection
+EndGlobal
