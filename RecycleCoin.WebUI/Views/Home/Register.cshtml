@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "- Register";
+}
+
+<head>
+    <!-- CSS File -->
+    <link rel="stylesheet" href="~/css/style-register.css" />
+</head>
+
+<section class="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 m-auto">
+                <div class="card m-auto">
+                    <div class="card-body">
+                        <div class="register-title mb-3">
+                            Sign up and protect your environment
+                        </div>
+                        <form action="">
+                            <div class="form-group">
+                                <div class="form-floating mb-3">
+                                    <input type="text"
+                                           class="form-control"
+                                           id="floatingName"
+                                           placeholder="Name" />
+                                    <label for="floatingInput">Name</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text"
+                                           class="form-control"
+                                           id="floatingSurname"
+                                           placeholder="Surname" />
+                                    <label for="floatingInput">Surname</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text"
+                                           class="form-control"
+                                           id="floatingUserName"
+                                           placeholder="Name" />
+                                    <label for="floatingInput">Username</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="email"
+                                           class="form-control"
+                                           id="floatingInput"
+                                           placeholder="name@example.com" />
+                                    <label for="floatingInput">Email address</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password"
+                                           class="form-control"
+                                           id="floatingPassword"
+                                           placeholder="Password" />
+                                    <label for="floatingPassword">Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password"
+                                           class="form-control"
+                                           id="floatingConfirmPassword"
+                                           placeholder="ConfirmPassword" />
+                                    <label for="floatingConfirmPassword">
+                                        Confirm Password
+                                    </label>
+                                </div>
+
+                                <button type="button" class="btn-register mb-3">
+                                    Regıster
+                                </button>
+                            </div>
+                        </form>
+                        <hr />
+                        <div class="sign-in">
+                            Already have an account? <a asp-area="" asp-controller="Home" asp-action="Login">Sign In</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

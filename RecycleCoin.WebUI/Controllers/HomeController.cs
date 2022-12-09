@@ -18,7 +18,20 @@ namespace RecycleCoin.WebUI.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Register()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult ForgotPassword()
         {
             return View();
         }

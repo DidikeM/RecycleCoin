@@ -1,0 +1,152 @@
+﻿/* Landing section */
+
+section.landing {
+    padding: 80px 0;
+}
+
+    section.landing .text {
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 73px;
+        color: var(--black);
+        padding-top: 100px;
+    }
+
+        section.landing .text .gradient-text {
+            font-size: 50px;
+            background-image: -webkit-linear-gradient(90deg, #2056a7, #3770c8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+    section.landing .buttons {
+        padding-top: 70px;
+    }
+
+.buttons .btn {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+/* About section */
+
+section.about .info-1 {
+    padding: 100px 0 !important;
+}
+
+section.about .text-information {
+    padding: 120px 0;
+}
+
+section.about h5 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 48px;
+    color: var(--black);
+}
+
+section.about p {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 28px;
+    color: var(--gray-1);
+    padding-top: 20px;
+}
+
+section.about .info-1 {
+    padding: 183px 0;
+}
+
+/* Earn Coin section */
+.earn-coin {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+    .earn-coin .positions {
+        position: relative;
+    }
+
+        .earn-coin .positions:hover {
+            top: -10px;
+        }
+
+    .earn-coin h3 {
+        font-size: 35px;
+        font-weight: 400;
+        margin-bottom: 100px;
+        color: var(--black);
+    }
+
+    .earn-coin .card {
+        border-radius: 60px;
+        text-align: center;
+        height: 100%;
+        box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
+    }
+
+    .earn-coin img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .earn-coin p {
+        margin-top: 30px;
+        font-size: 18px;
+        line-height: 1.8;
+        font-weight: 500;
+        color: var(--gray-1);
+    }
+
+    .earn-coin .card h4 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--primary-dark);
+    }
+
+/* Support questions */
+section.support-questions .text-information {
+    padding: 50px 0;
+}
+
+    section.support-questions .text-information h5 {
+        font-size: 15;
+        color: var(--primary);
+        margin-bottom: 10px;
+    }
+
+    section.support-questions .text-information h4 {
+        color: var(--black);
+        font-weight: 600;
+        margin-bottom: 25px;
+    }
+
+    section.support-questions .text-information .accordion-button {
+        box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
+    }
+
+/* responsive section */
+@media screen and (max-width: 768px) {
+    section.landing,
+    section.about {
+        text-align: center;
+    }
+
+    /* landing section */
+    .section.landing img {
+        padding-top: 2.5rem;
+    }
+
+    .section.landing text {
+        font-weight: 800;
+        font-size: 38px;
+        line-height: 53px;
+    }
+
+    /* earn-coin*/
+    .earn-coin .positions:hover {
+        top: 0;
+    }

@@ -1,0 +1,75 @@
+﻿.login {
+    height: min-content;
+    padding: 20px;
+    padding-top: 0;
+    padding-bottom: 5px;
+}
+
+    .login .login-title {
+        color: #3770c8;
+        font-size: 16px;
+        vertical-align: middle;
+    }
+
+    .login .container .card {
+        width: 400px;
+        box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
+    }
+
+        .login .container .card hr {
+            background: #3770c8;
+        }
+
+    .login img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80px;
+        height: 80px;
+    }
+
+    .login form {
+        font-size: 15px;
+    }
+
+.btn-sign-in {
+    width: 100%;
+    border-radius: 30px;
+    padding: 12px 20px;
+    border-color: #3770c8;
+    color: #3770c8;
+    transition: 0.5s;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.btn-sign-in:hover {
+    box-shadow: 0 0 10px #3770c8;
+}
+
+.login .forgot-password,
+.login .create-acount {
+    text-align: center;
+}
+
+    .login .forgot-password a,
+    .login .create-acount a {
+        text-decoration: none;
+        color: #3770c8;
+        font-weight: 600;
+    }
+
+@media screen and (max-width: 450px) {
+    .login .container .card {
+        width: 300px;
+    }
+
+        .login .container .card img {
+            width: 60px;
+            height: 60px;
+        }
+
+    .btn-sign-in {
+        padding: 8px 15px;
+    }
+}

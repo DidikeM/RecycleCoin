@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "- Contact";
+}
+
+<head>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/style-contact.css" />
+</head>
+
+<section class="contact-us">
+    <div class="container contact-title">
+        <div class="row">
+            <h1 class="mb-3">Contact Us</h1>
+            <p>Any question or remarks? Just write us a message!</p>
+        </div>
+    </div>
+    <div class="contact-info">
+        <div class="container">
+            <div class="contactinfo">
+                <div>
+                    <h2 class="mb-3">Contact Information</h2>
+                    <p class="mb-5">
+                        Fill up form and our team will get back to you within 24 hours.
+                    </p>
+                    <img src="~/images/contact-logo.png"
+                         alt="contact-logo"
+                         class="float-end align-bottom" />
+                </div>
+            </div>
+            <div class="contactForm">
+                <div class="formBox">
+                    <div class="inputBox w50">
+                        <input type="text" name="" required />
+                        <span>Name</span>
+                    </div>
+
+                    <div class="inputBox w50">
+                        <input type="text" name="" required />
+                        <span>Email Address</span>
+                    </div>
+                    <div class="inputBox w100">
+                        <textarea type="text" name="" required></textarea>
+                        <span>Write your message here...</span>
+                    </div>
+
+                    <button type="button" class="btn btn-submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

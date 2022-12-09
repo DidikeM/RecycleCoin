@@ -1,0 +1,83 @@
+﻿.register {
+    height: min-content;
+    padding: 20px;
+}
+
+    .register .container .card {
+        width: 400px;
+        box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
+    }
+
+        .register .container .card hr {
+            background: #3770c8;
+        }
+
+        .register .container .card .register-title {
+            color: #3770c8;
+            font-size: 16px;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+    .register .card {
+        width: 400px;
+    }
+
+    .register img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 64px;
+        height: 64px;
+    }
+
+    .register form {
+        font-size: 15px;
+    }
+
+.btn-register {
+    width: 100%;
+    border-radius: 30px;
+    padding: 12px 20px;
+    border-color: #3770c8;
+    color: #3770c8;
+    transition: 0.5s;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.btn-register:hover {
+    box-shadow: 0 0 10px #3770c8;
+}
+
+.register .sign-in {
+    text-align: center;
+}
+
+    .register .sign-in a {
+        color: #3770c8;
+        font-weight: 600;
+    }
+
+@media screen and (max-width: 450px) {
+    .register .container .card {
+        width: 300px;
+    }
+
+        .register .container .card .register-title {
+            font-size: 14px;
+        }
+
+        .register .container .card img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .register .container .card .sign-in {
+            font-size: 14px;
+        }
+
+    .btn-register {
+        padding: 8px 15px;
+    }
+}

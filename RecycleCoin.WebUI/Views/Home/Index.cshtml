@@ -1,8 +1,193 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+<head>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/style-index.css" />
+</head>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Landing section-->
+<section class="landing">
+    <div class="container">
+        <div class="row">
+            <!-- Text -->
+            <div class="col-md-6">
+                <div class="text">
+                    In recycling <br />new era of crypto
+                    <span class="gradient-text">RECYCLE COIN</span>
+                </div>
+                <div class="buttons">
+                    <a asp-area="" asp-controller="Home" asp-action="Register" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+            <!-- Image -->
+            <div class="col-md-6">
+                <img src="~/images/globe.png" alt="globe-img" class="w-100" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Earn Coin section-->
+<section class="earn-coin">
+    <div class="container">
+        <h3>Get started in just a few minutes</h3>
+        <div class="row">
+            <div class="col-md-4 positions">
+                <div class="card d-block p-3">
+                    <img src="~/images/signup.png" alt="sign up" />
+                    <div class="card-body">
+                        <h4>Sign Up</h4>
+                        <p>
+                            Earn Recycle Coins, then store them securely in your wallet or
+                            easily send them to your friends
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 positions">
+                <div class="card d-block p-3">
+                    <img src="~/images/wallet.png" alt="wallet" />
+                    <div class="card-body">
+                        <h4>Recycle</h4>
+                        <p>
+                            Earn money and protect the environment by bringing recyclable
+                            materials to our recycling centers
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 positions">
+                <div class="card d-block p-3">
+                    <img src="~/images/earn.png" alt="earn" />
+                    <div class="card-body">
+                        <h4>Earn Coin</h4>
+                        <p>
+                            Sign up for your free Recycle wallet and follow our easy
+                            process to create your profile
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About section -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="row info-1">
+            <!-- Image -->
+            <div class="col-md-6">
+                <img src="~/images/tradingtools.png"
+                     alt="About us"
+                     class="w-100" />
+            </div>
+
+            <!-- Text -->
+            <div class="col-md-6">
+                <div class="text-information">
+                    <h5>Let's introduce ourselves</h5>
+                    <p>
+                        We believe that there should be no such thing as waste in the
+                        world. Together we keep our environment clean by developing new
+                        solutions and new uses for recyclables.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Client opinion section -->
+<section class="client-area"></section>
+
+<!-- Support questions -->
+<section class="support-questions" id="support">
+    <div class="container">
+        <div class="row">
+            <!-- Text -->
+            <div class="col-md-6">
+                <div class="text-information">
+                    <h5>SUPPORT</h5>
+                    <h4>Frequently asked questions</h4>
+
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne"
+                                        aria-expanded="true"
+                                        aria-controls="collapseOne">
+                                    What is the main purpose of Recycle Coin?
+                                </button>
+                            </h2>
+                            <div id="collapseOne"
+                                 class="accordion-collapse collapse show"
+                                 aria-labelledby="headingOne"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>It is a decentralized cryptocurrency.</strong> It
+                                    is open source software; identified by encrypted and
+                                    anonymous codes. As it uses peer to peer (P2P) technology,
+                                    it enables all kinds of financial transactions to be
+                                    recorded easily between peers in a secure environment.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo"
+                                        aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                    How can I convert my recycle items into Recycle Coins?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo"
+                                 class="accordion-collapse collapse"
+                                 aria-labelledby="headingTwo"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Recycling objects brought by the user are entered into the
+                                    system by the operator, and points are added to the
+                                    address of the person who brings the waste.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree"
+                                        aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                    Why is recycling necessary?
+                                </button>
+                            </h2>
+                            <div id="collapseThree"
+                                 class="accordion-collapse collapse"
+                                 aria-labelledby="headingThree"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    By recycling, we protect both nature and our resources. As
+                                    a result of recycling plastic packaging waste, oil savings
+                                    can be achieved. By recycling metal packaging, we can
+                                    protect our natural areas from deterioration.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="col-md-6">
+                <img src="~/images/faq.png" alt="Asked questions" class="w-100" />
+            </div>
+        </div>
+    </div>
+</section>
