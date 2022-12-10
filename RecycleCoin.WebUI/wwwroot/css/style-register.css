@@ -1,6 +1,7 @@
 ﻿.register {
     height: min-content;
     padding: 20px;
+    animation: 1s entry-animate ease-in-out !important;
 }
 
     .register .container .card {
@@ -58,6 +59,8 @@
         color: #3770c8;
         font-weight: 600;
     }
+
+
 
 @media screen and (max-width: 450px) {
     .register .container .card {

@@ -1,4 +1,9 @@
 ﻿/* contact-title */
+
+.contact-us{
+    animation:1s entry-animate ease-in-out !important;
+}
+
 .contact-title {
     text-align: center;
 }

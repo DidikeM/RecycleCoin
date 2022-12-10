@@ -18,15 +18,23 @@ namespace RecycleCoin.WebUI.Controllers
             return View();
         }
 
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult Forum()
+        {
+            return View();
+        }
+
         public IActionResult Login()
         {
             return View();
         }
+
         public IActionResult Register()
-        {
-            return View();
-        }
-        public IActionResult Contact()
         {
             return View();
         }

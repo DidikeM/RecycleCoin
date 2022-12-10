@@ -12,7 +12,7 @@ sr.reveal(".landing .buttons", { delay: 500 });
 sr.reveal(".landing img", { delay: 500 });
 sr.reveal(".earn-coin", { delay: 700, origin: "bottom" });
 sr.reveal(".about img", { interval: 100 });
-sr.reveal(" .support-questions .text-information", {
+sr.reveal(".support-questions .text-information", {
   delay: 800,
   origin: "left",
 });

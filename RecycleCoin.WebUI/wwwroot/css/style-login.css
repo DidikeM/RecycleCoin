@@ -3,6 +3,7 @@
     padding: 20px;
     padding-top: 0;
     padding-bottom: 5px;
+    animation: 1s entry-animate ease-in-out !important;
 }
 
     .login .login-title {

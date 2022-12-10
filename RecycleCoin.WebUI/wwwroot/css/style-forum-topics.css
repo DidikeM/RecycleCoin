@@ -1,0 +1,147 @@
+﻿.topics {
+    height: min-content;
+    padding: 20px;
+    animation: 1s entry-animate ease-in-out !important;
+}
+
+    .topics .card-body {
+        border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
+    }
+
+    .topics .container .card .topics-title {
+        color: #3770c8;
+    }
+
+    .topics .card-body hr {
+        color: #3770c8;
+    }
+
+    .topics .card-body .topics-info {
+        padding: 10px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
+    }
+
+        .topics .card-body .topics-info .topics-info-user {
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid rgba(55, 112, 200, 0.8);
+            letter-spacing: 1.1px;
+            text-align: center;
+        }
+
+            .topics .card-body .topics-info .topics-info-user img {
+                width: 70px;
+                height: 70px;
+                display: block;
+                margin: auto;
+            }
+
+            .topics .card-body .topics-info .topics-info-user p {
+                font-weight: 400;
+                color: #000;
+                margin: 0;
+                font-size: 14px;
+            }
+
+            .topics .card-body .topics-info .topics-info-user #topics-info-username {
+                color: #3770c8;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            .topics .card-body .topics-info .topics-info-user #topics-info-date,
+            .topics .card-body .topics-info .topics-info-user #topics-info-answer {
+                color: #000;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+    .topics .card-body .topics-info-question .topics-info-question-title a {
+        color: #3770c8;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+        letter-spacing: 0.2;
+    }
+
+        .topics .card-body .topics-info-question .topics-info-question-title a:hover {
+            color: #0f3959;
+        }
+
+    .topics .card-body .topics-info-question .topics-info-question-title hr {
+        margin: 0;
+        margin-top: 5px;
+        background: #3770c8;
+    }
+
+    .topics .card-body .topics-info-question .topics-info-lite-question {
+        font-size: 16px;
+        min-height: 70%;
+    }
+
+@media only screen and (max-width: 768px) {
+    .topics .container .card .topics-title {
+        font-size: 26px;
+    }
+
+    .topics .card-body .topics-info .topics-info-user img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .topics .card-body .topics-info .topics-info-user p {
+        font-size: 13px;
+    }
+
+    .topics .card-body .topics-info .topics-info-user #topics-info-username {
+        font-size: 14px;
+    }
+
+    .topics .card-body .topics-info .topics-info-user #topics-info-date,
+    .topics .card-body .topics-info .topics-info-user #topics-info-answer {
+        font-size: 15px;
+    }
+
+    .topics .card-body .topics-info-question .topics-info-question-title a {
+        font-size: 14px;
+    }
+
+    .topics .card-body .topics-info-question .topics-info-lite-question {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 597px) {
+    .topics .container .card .topics-title {
+        font-size: 22px;
+    }
+
+    .topics .card-body .topics-info .topics-info-user img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .topics .card-body .topics-info .topics-info-user p {
+        font-size: 10px;
+    }
+
+    .topics .card-body .topics-info .topics-info-user #topics-info-username {
+        font-size: 11px;
+    }
+
+    .topics .card-body .topics-info .topics-info-user #topics-info-date,
+    .topics .card-body .topics-info .topics-info-user #topics-info-answer {
+        font-size: 12px;
+    }
+
+    .topics .card-body .topics-info-question .topics-info-question-title a {
+        font-size: 11px;
+    }
+
+    .topics .card-body .topics-info-question .topics-info-lite-question {
+        font-size: 11px;
+    }
+}

@@ -27,6 +27,15 @@ html {
     scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent, #3770c8);
+    border-radius: 6px;
+}
+
 /* button*/
 
 .btn {
@@ -140,6 +149,21 @@ html {
         font-size: 25px;
     }
 
+/* animation */
+
+@keyframes entry-animate {
+    from {
+        transform: translateY(-60px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
 /* navbar */
 .navbar .btn-outline-secondary {
     border: 1px solid var(--gray-2);
@@ -228,6 +252,14 @@ html {
     width: 100%;
 }
 
+.navbar-toggler {
+    box-shadow: 0 2px 8px rgba(55, 112, 200, 0.8);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 2px 8px rgba(55, 112, 200, 0.8);
+}
+
 /* footer */
 footer {
     margin-bottom: 44px;
@@ -255,8 +287,26 @@ footer {
     }
 
     .navbar .navbar-brand {
-        top:12px;
+        top: 12px;
         font-size: 40px
+    }
+
+    .navbar-nav > li {
+        align-items: start;
+        padding-left: 50px;
+    }
+
+    .navbar .navbar-nav li a ~ span {
+        margin-bottom: 20px;
+    }
+
+    .navbar .navbar-nav li a:hover ~ span {
+        width: 25%;
+    }
+
+    /* landing */
+    .landing {
+        padding-top: 0 !important;
     }
 
     /* buttons */
