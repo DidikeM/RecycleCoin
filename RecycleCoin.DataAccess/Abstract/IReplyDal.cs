@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RecycleCoin.DataAccess.Abstract
 {
-    public interface IReplyDal: IEntityRepository<Reply>
+    public interface IReplyDal : IEntityRepository<Reply>
     {
     }
 }

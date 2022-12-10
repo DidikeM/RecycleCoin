@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RecycleCoin.Business.DependencyResolvers.Ninject
 {
-    internal class InstanceFactory
+    public class InstanceFactory
     {
         public static T GetInstance<T>()
         {

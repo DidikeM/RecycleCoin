@@ -1,0 +1,178 @@
+﻿
+
+.topic-answers {
+    padding: 20px;
+    animation: 1s entry-animate ease-in-out !important;
+}
+
+
+    .topic-answers .card-body {
+        box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
+    }
+
+    .topic-answers .topic-info-question {
+        border: 1px solid rgba(55, 112, 200, 0.8);
+        padding: 5px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+        .topic-answers .topic-info-question h2 {
+            font-size: 18px;
+            color: #3770c8;
+        }
+
+        .topic-answers .topic-info-question #topic-question {
+            font-size: 14px;
+            color: #000;
+            opacity: 0.7;
+            letter-spacing: 0.2px;
+        }
+
+    .topic-answers .card-body h3 {
+        font-size: 22px;
+        color: #3770c8;
+    }
+
+    .topic-answers .card-body hr {
+        margin: 0;
+        background: #3770c8;
+    }
+
+    .topic-answers .topic-user-answer {
+        padding: 15px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
+    }
+
+        .topic-answers .topic-user-answer .topic-answer-info {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            border-right: 2px solid rgba(55, 112, 200, 0.8);
+        }
+
+            .topic-answers .topic-user-answer .topic-answer-info img {
+                width: 70px;
+                height: 70px;
+                display: block;
+                margin: auto;
+            }
+
+            .topic-answers .topic-user-answer .topic-answer-info #topic-answer-username {
+                color: #3770c8;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+        .topic-answers .topic-user-answer .topic-answer {
+            height: 100%;
+        }
+
+            .topic-answers .topic-user-answer .topic-answer p {
+                margin: 0;
+            }
+
+#submit-container {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.topic-answers #submit-container .submit-topics-answer {
+    width: 150px;
+    border-color: #3770c8;
+    border-radius: 30px;
+    padding: 10px;
+    color: #3770c8;
+    transition: 0.5s;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 20px;
+    right: 0;
+}
+
+    .topic-answers #submit-container .submit-topics-answer:hover {
+        box-shadow: 0 0 10px #3770c8;
+    }
+
+.ck-content p {
+    min-height: 200px;
+}
+
+@media only screen and (max-width: 768px) {
+    .topic-answers .topic-info-question h2 {
+        font-size: 16px;
+    }
+
+    .topic-answers .topic-info-question #topic-question {
+        font-size: 12px;
+    }
+
+    .topic-answers .card-body h3 {
+        font-size: 20px;
+    }
+
+    .topic-answers .topic-user-answer .topic-answer-info img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .topic-answers .topic-user-answer .topic-answer-info #topic-answer-username {
+        font-size: 14px;
+    }
+
+    .topic-answers .topic-user-answer .topic-answer p {
+        font-size: 14px;
+    }
+
+    .ck-content p {
+        min-height: 150px;
+    }
+
+    .topic-answers #submit-container .submit-answer {
+        width: 130px;
+        padding: 5px;
+        letter-spacing: 0.1em;
+    }
+}
+
+@media only screen and (max-width: 597px) {
+    .topic-answers .topic-info-question h2 {
+        font-size: 14px;
+    }
+
+    .topic-answers .topic-info-question #topic-question {
+        font-size: 11px;
+    }
+
+    .topic-answers .card-body h3 {
+        font-size: 16px;
+    }
+
+    .topic-answers .topic-user-answer .topic-answer-info img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .topic-answers .topic-user-answer .topic-answer-info #topic-answer-username {
+        font-size: 14px;
+    }
+
+    .topic-answers .topic-user-answer .topic-answer p {
+        font-size: 12px;
+    }
+
+    .ck-content p {
+        min-height: 100px;
+    }
+
+    .topic-answers #submit-container .submit-topics-answer {
+        width: 110px;
+        padding: 2px;
+        letter-spacing: 0;
+    }
+}

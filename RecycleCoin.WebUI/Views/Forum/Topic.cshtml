@@ -1,0 +1,88 @@
+﻿@model TopicModel
+
+@{
+    ViewData["Title"] = "- Forum Cevap";
+}
+
+<head>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/style-forum-reply.css" />
+</head>
+
+@{
+    var topic = (TopicModel)ViewBag.TopicModel;
+}
+
+<section class="topic-answers">
+    <div class="container">
+        <div class="col-lg-9 m-auto">
+            <div class="card">
+                <div class="card-body">
+                    <div class="log-md-8 topic-info-question">
+                        <h2>@topic.Title</h2>
+                        <p id="topic-question">
+                            @topic.Text
+                        </p>
+                    </div>
+
+                    <h3>Answers</h3>
+                    <hr />
+                    @foreach (var reply in topic.Replies)
+                    {
+                        <div class="topic-user-answer">
+                            <div class="row">
+                                <div class="col-2 topic-answer-info">
+                                    <img src="~/images/user-logo.png" alt="user-logo" />
+                                    <span id="topic-answer-username">@reply.User.Username</span>
+                                </div>
+                                <div class="col-10">
+                                    <div class="topic-answer d-flex align-items-center">
+                                        @Html.Raw(System.Web.HttpUtility.HtmlDecode(reply.Text))
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <form asp-controller="Forum" asp-action="Topic" method="post">
+                        <input type="hidden" name="topicId" value="@topic.Id" />
+                        <input type="hidden" name="userId" value="@topic.UserId" /> @*Burası hatalı düzeltilecek güzel kardeşim denemek için böyle bırakıldı*@
+                        <textarea  id="editor" name="textt"></textarea>
+
+                        <div id="submit-container">
+
+                            <input type="submit" class="submit-topics-answer" value="Submıt" />
+                        </div>
+                    </form>
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script>
+
+<script>
+    ClassicEditor.create(document.querySelector("#editor")).
+        then(editor => {
+            window.editor = editor;   /*bu satırdaki ilk editörün ismini değişecek*/
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+</script>

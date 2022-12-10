@@ -10,5 +10,6 @@ namespace RecycleCoin.DataAccess.Concrete.EntityFramework
 {
     public class EfReplyDal : EfEntityRepositoryBase<Reply, RecycleCoinContext>, IReplyDal
     {
+
     }
 }

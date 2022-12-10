@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="~/css/style-forum-topics.css" />
 </head>
 
+@{
+    var list = (List<TopicModel>)ViewBag.TopicModel;
+}
+
 <section class="topics">
     <div class="container">
         <div class="col-lg-9 m-auto">
@@ -15,29 +19,31 @@
                     <h2 class="topics-title">Topics</h2>
                     <hr />
 
-                    <div class="topics-info">
-                        <div class="row">
-                            <div class="col-3 topics-info-user">
-                                <img src="~/images/user-logo.png" alt="user-logo" />
-                                <span id="topics-info-username">username</span>
-                                <p>
-                                    Created on <span id="topics-info-date">../../....</span>
-                                </p>
-                                <p>Answering: <span id="topics-info-answer">x</span></p>
-                            </div>
-                            <div class="col-9 topics-info-question">
-                                <div class="topics-info-question-title">
-                                    <a href="#">27 inç 240 Hz monitör tavsiyesi</a>
-                                    <hr />
+                    @foreach (var item in list)
+                    {
+                        <div class="topics-info">
+                            <div class="row">
+                                <div class="col-3 topics-info-user">
+                                    <img src="~/images/user-logo.png" alt="user-logo" />
+                                    <span id="topics-info-username">@item.User.Username</span>
+                                    <p>
+                                        Created on<br> <span id="topics-info-date">@item.Date</span>
+                                    </p>
+                                    <p>Answering: <span id="topics-info-answer">@item.ReplyCount</span></p>
                                 </div>
-                                <div class="topics-info-lite-question d-flex align-items-center">
-                                    FPS oyunları oynuyorum. 27 inç 1080p benim için yeterli 2
-                                    ürün arasında kaldım. Eklediğim ekran görüntüsünde mevcut.
-                                    Hangisinin tavsiye edersiniz ...
+                                <div class="col-9 topics-info-question">
+                                    <div class="topics-info-question-title">
+                                        <a asp-area="" asp-controller="Forum" asp-action="Topic" asp-route-id="@item.Id">@item.Title</a>
+                                        <hr />
+                                    </div>
+                                    <div class="topics-info-lite-question d-flex align-items-center">
+                                        @item.Text
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
-                    </div>
+                    }
 
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">

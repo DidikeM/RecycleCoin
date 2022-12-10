@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecycleCoin.Entities.Concrete.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,7 @@ namespace RecycleCoin.Business.Abstract
 {
     public interface IUserSevice
     {
+        void AddUser(User user);
+        User GetById(int id);
     }
 }

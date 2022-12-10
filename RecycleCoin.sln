@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecycleCoin.DataAccess", "R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecycleCoin.Entities", "RecycleCoin.Entities\RecycleCoin.Entities.csproj", "{5D26DE99-1056-4094-9804-12BE0E5A84EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{5BC32A28-7188-4405-9675-0D75F5131739}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5D26DE99-1056-4094-9804-12BE0E5A84EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D26DE99-1056-4094-9804-12BE0E5A84EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D26DE99-1056-4094-9804-12BE0E5A84EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC32A28-7188-4405-9675-0D75F5131739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC32A28-7188-4405-9675-0D75F5131739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC32A28-7188-4405-9675-0D75F5131739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC32A28-7188-4405-9675-0D75F5131739}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

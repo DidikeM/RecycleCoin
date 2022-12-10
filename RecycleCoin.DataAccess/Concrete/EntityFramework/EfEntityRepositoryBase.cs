@@ -20,6 +20,14 @@ namespace RecycleCoin.DataAccess.Concrete.EntityFramework
             }
         }
 
+        public int GetCount(Expression<Func<T, bool>> filter)
+        {
+            using (TContext context = new TContext())
+            {
+                return filter == null ? context.Set<T>().Count(): context.Set<T>().Count(filter);
+            }
+        }
+
         public List<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
             using (TContext context = new TContext())
