@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "- Forum";
+    ViewData["Title"] = "- Form";
 }
 
 <head>
@@ -16,9 +16,13 @@
         <div class="col-lg-9 m-auto">
             <div class="card m-auto">
                 <div class="card-body">
-                    <h2 class="topics-title">Topics</h2>
+                    <div class="title-container">
+                        <h2 class="topics-title">Topics</h2>
+                        <button type="submit" class="create-topic" asp-area="" asp-controller="Forum" asp-action="CreateTopic">
+                            Create a topic
+                        </button>
+                    </div>
                     <hr />
-
                     @foreach (var item in list)
                     {
                         <div class="topics-info">

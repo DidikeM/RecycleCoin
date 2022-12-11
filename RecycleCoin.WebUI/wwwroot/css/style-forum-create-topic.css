@@ -1,0 +1,64 @@
+﻿.create-topic {
+    height: min-content;
+    padding: 20px;
+}
+
+    .create-topic .card-body {
+        border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
+        padding: 40px;
+    }
+
+        .create-topic .card-body .topic-create-title h2 {
+            font-size: 25px;
+            color: rgba(55, 112, 200, 0.8);
+        }
+
+.create-topics .card-body hr {
+    color: #3770c8;
+}
+
+
+.create-topic .form-control {
+    border: 1px solid rgba(55, 112, 200, 0.8);
+    margin-bottom: 30px;
+}
+
+.ck-toolbar,
+.ck-blurred {
+    border: 1px solid rgba(55, 112, 200, 0.8) !important;
+}
+
+.ck-content p {
+    min-height: 200px;
+}
+
+#submit-container {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.create-topic #submit-container .submit-topics-answer {
+    width: 120px;
+    border-color: #3770c8;
+    border-radius: 30px;
+    padding: 5px;
+    color: #3770c8;
+    transition: 0.5s;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 20px;
+    right: 0;
+}
+
+    .create-topic #submit-container .submit-topics-answer:hover {
+        box-shadow: 0 0 10px #3770c8;
+    }
+
+@media only screen and (max-width: 575px) {
+    .create-topic .card-body .topic-create-title h2 {
+        font-size: 20px;
+    }
+}

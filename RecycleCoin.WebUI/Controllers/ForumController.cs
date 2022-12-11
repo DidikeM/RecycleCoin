@@ -55,8 +55,11 @@ namespace RecycleCoin.WebUI.Controllers
             return View();
         }
 
-
-
+        public IActionResult CreateTopic()
+        {
+            return View();
+        }
+        
         TopicModel GetTopic(int id)
         {
             Topic topic = _topicSevice.GetById(id);
@@ -83,6 +86,7 @@ namespace RecycleCoin.WebUI.Controllers
             }
             return topicModel;
         }
+
 
     }
 }

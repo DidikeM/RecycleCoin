@@ -1,0 +1,46 @@
+﻿@model TopicModel
+
+@{
+    ViewData["Title"] = "- Create Form ";
+}
+
+<head>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/style-create-topics.css" />
+</head>
+
+<section class="create-topic">
+    <div class="container">
+        <div class="col-lg-7 m-auto">
+            <div class="card m-auto">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="topic-create-title">
+                            <h2>Create a topic</h2>
+                            <hr />
+                            <input type="text"
+                                   class="form-control"
+                                   id="topic-title"
+                                   placeholder="Write a topic title " />
+                            <div id="editor"></div>
+
+                            <div id="submit-container">
+                                <button type="submit" class="submit-topics-answer">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script>
+
+<script>
+    ClassicEditor.create(document.querySelector("#editor")).catch((error) => {
+        console.error(error);
+    });
+</script>

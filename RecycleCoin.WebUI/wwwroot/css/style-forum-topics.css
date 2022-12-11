@@ -9,78 +9,104 @@
         box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
     }
 
-    .topics .container .card .topics-title {
-        color: #3770c8;
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.topics .container .card .topics-title {
+    color: #3770c8;
+    margin-bottom: 0;
+    padding-top: 10px;
+}
+
+.create-topic {
+    font-size: 12px;
+    width: 130px;
+    background-color: #fff;
+    border-color: #3770c8;
+    border-radius: 30px;
+    padding: 5px;
+    color: #3770c8;
+    transition: 0.5s;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.title-container .create-topic:hover {
+    box-shadow: 0 0 10px #3770c8;
+}
+
+.topics .card-body hr {
+    color: #3770c8;
+}
+
+.topics .card-body .topics-info {
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
+}
+
+    .topics .card-body .topics-info .topics-info-user {
+        display: flex;
+        flex-direction: column;
+        border-right: 2px solid rgba(55, 112, 200, 0.8);
+        letter-spacing: 1.1px;
+        text-align: center;
     }
 
-    .topics .card-body hr {
-        color: #3770c8;
-    }
-
-    .topics .card-body .topics-info {
-        padding: 10px;
-        border-radius: 15px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
-    }
-
-        .topics .card-body .topics-info .topics-info-user {
-            display: flex;
-            flex-direction: column;
-            border-right: 2px solid rgba(55, 112, 200, 0.8);
-            letter-spacing: 1.1px;
-            text-align: center;
+        .topics .card-body .topics-info .topics-info-user img {
+            width: 70px;
+            height: 70px;
+            display: block;
+            margin: auto;
         }
 
-            .topics .card-body .topics-info .topics-info-user img {
-                width: 70px;
-                height: 70px;
-                display: block;
-                margin: auto;
-            }
-
-            .topics .card-body .topics-info .topics-info-user p {
-                font-weight: 400;
-                color: #000;
-                margin: 0;
-                font-size: 14px;
-            }
-
-            .topics .card-body .topics-info .topics-info-user #topics-info-username {
-                color: #3770c8;
-                font-size: 16px;
-                font-weight: 500;
-            }
-
-            .topics .card-body .topics-info .topics-info-user #topics-info-date,
-            .topics .card-body .topics-info .topics-info-user #topics-info-answer {
-                color: #000;
-                font-size: 14px;
-                font-weight: 500;
-            }
-
-    .topics .card-body .topics-info-question .topics-info-question-title a {
-        color: #3770c8;
-        font-size: 16px;
-        font-weight: 500;
-        text-decoration: none;
-        letter-spacing: 0.2;
-    }
-
-        .topics .card-body .topics-info-question .topics-info-question-title a:hover {
-            color: #0f3959;
+        .topics .card-body .topics-info .topics-info-user p {
+            font-weight: 400;
+            color: #000;
+            margin: 0;
+            font-size: 14px;
         }
 
-    .topics .card-body .topics-info-question .topics-info-question-title hr {
-        margin: 0;
-        margin-top: 5px;
-        background: #3770c8;
+        .topics .card-body .topics-info .topics-info-user #topics-info-username {
+            color: #3770c8;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .topics .card-body .topics-info .topics-info-user #topics-info-date,
+        .topics .card-body .topics-info .topics-info-user #topics-info-answer {
+            color: #000;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+.topics .card-body .topics-info-question .topics-info-question-title a {
+    color: #3770c8;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.2;
+}
+
+    .topics .card-body .topics-info-question .topics-info-question-title a:hover {
+        color: #0f3959;
     }
 
-    .topics .card-body .topics-info-question .topics-info-lite-question {
-        font-size: 16px;
-        min-height: 70%;
-    }
+.topics .card-body .topics-info-question .topics-info-question-title hr {
+    margin: 0;
+    margin-top: 5px;
+    background: #3770c8;
+}
+
+.topics .card-body .topics-info-question .topics-info-lite-question {
+    font-size: 16px;
+    min-height: 70%;
+}
 
 @media only screen and (max-width: 768px) {
     .topics .container .card .topics-title {
