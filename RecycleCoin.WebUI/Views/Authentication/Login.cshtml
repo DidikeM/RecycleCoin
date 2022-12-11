@@ -1,4 +1,6 @@
-﻿@{
+﻿@model UserModel
+
+@{
     ViewData["Title"] = "- Login";
 }
 
@@ -18,33 +20,35 @@
                         </div>
                         <hr />
                         <img src="~/images/user-logo.png" alt="login" class="mb-3" />
-                        <form action="">
+                        <form asp-controller="Authentication" asp-action="Login" method="post">
                             <div class="form-group">
                                 <div class="form-floating mb-3">
-                                    <input type="email"
+                                    <input name="Email"
+                                           type="email"
                                            class="form-control"
                                            id="floatingInput"
                                            placeholder="name@example.com" />
                                     <label for="floatingInput">Email address</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <input type="password"
+                                    <input name="password"
+                                           type="password"
                                            class="form-control"
                                            id="floatingPassword"
                                            placeholder="Password" />
                                     <label for="floatingPassword">Password</label>
                                 </div>
 
-                                <button type="button" class="btn-sign-in mb-3">
+                                <button type="submit" class="btn-sign-in mb-3">
                                     Sıgn In
                                 </button>
                             </div>
                         </form>
                         <div class="forgot-password mb-3">
-                            or <a asp-area="" asp-controller="Home" asp-action="ForgotPassword">Forgot Password</a>
+                            or <a asp-area="" asp-controller="Authentication" asp-action="ForgotPassword">Forgot Password</a>
                         </div>
                         <div class="create-acount">
-                            Don't have an account? <a asp-area="" asp-controller="Home" asp-action="Register"> Register </a>
+                            Don't have an account? <a asp-area="" asp-controller="Authentication" asp-action="Register"> Register </a>
                         </div>
                     </div>
                 </div>

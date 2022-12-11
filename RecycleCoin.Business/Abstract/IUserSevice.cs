@@ -10,6 +10,7 @@ namespace RecycleCoin.Business.Abstract
     public interface IUserSevice
     {
         void AddUser(User user);
+        User GetByEmailAndPassword(string email, string password);
         User GetById(int id);
     }
 }

@@ -22,6 +22,11 @@ namespace RecycleCoin.Business.Concrete
             _UserDal.Add(user);
         }
 
+        public User GetByEmailAndPassword(string email, string password)
+        {
+            return _UserDal.Get(p=> p.Email == email && p.Password == password);
+        }
+
         public User GetById(int id)
         {
             return _UserDal.Get(p => p.Id == id);

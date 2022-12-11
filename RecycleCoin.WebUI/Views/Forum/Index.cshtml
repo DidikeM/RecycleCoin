@@ -18,9 +18,11 @@
                 <div class="card-body">
                     <div class="title-container">
                         <h2 class="topics-title">Topics</h2>
-                        <button type="submit" class="create-topic" asp-area="" asp-controller="Forum" asp-action="CreateTopic">
-                            Create a topic
-                        </button>
+                        <form asp-area="" asp-controller="Forum" asp-action="CreateTopic">
+                            <button class="create-topic"> 
+                                Create a topic
+                            </button>
+                        </form>
                     </div>
                     <hr />
                     @foreach (var item in list)
