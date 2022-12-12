@@ -10,14 +10,14 @@ namespace RecycleCoin.WebUI.Controllers
 {
     public class ForumController : Controller
     {
-        private ITopicSevice _topicSevice = InstanceFactory.GetInstance<ITopicSevice>();
+        private ITopicService _topicService = InstanceFactory.GetInstance<ITopicService>();
         private IReplyService _replyService = InstanceFactory.GetInstance<IReplyService>();
-        private IUserSevice _userSevice = InstanceFactory.GetInstance<IUserSevice>();
+        private IUserService _userService = InstanceFactory.GetInstance<IUserService>();
 
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
-            List<Topic> topics = _topicSevice.GetAllTopic();
+            List<Topic> topics = _topicService.GetAllTopic();
             List<TopicModel> topicModels = new List<TopicModel>();
             foreach (var topic in topics)
             {
@@ -28,43 +28,64 @@ namespace RecycleCoin.WebUI.Controllers
                     Text = topic.Text,
                     Title = topic.Title,
                     UserId = topic.UserId,
-                    User = _userSevice.GetById(topic.UserId),
+                    User = _userService.GetById(topic.UserId),
                     ReplyCount = _replyService.GetReplyCountByTopicId(topic.Id)
-                }) ;
+                });
             }
 
             ViewBag.TopicModel = topicModels;
             return View();
         }
 
-
+        [AllowAnonymous]
         public IActionResult Topic(int id)
         {
             ViewBag.TopicModel = GetTopic(id);
             return View();
         }
 
+
         [HttpPost]
-        public IActionResult Topic(int topicid,int userId, string textt)
+        public IActionResult Topic(int topicid, string text)
         {
-            _replyService.AddReply(new Reply
+            ClaimsPrincipal principal = HttpContext.User as ClaimsPrincipal;
+            if (null != principal)
             {
-                TopicId = topicid,
-                Text = textt,
-                 UserId= userId
-            });
+                _replyService.AddReply(new Reply
+                {
+                    TopicId = topicid,
+                    Text = text,
+                    UserId = Convert.ToInt32(principal.Claims.Where(p => p.Type == "id").FirstOrDefault()!.Value)
+                });
+            }
             ViewBag.TopicModel = GetTopic(topicid);
             return View();
         }
+
 
         public IActionResult CreateTopic()
         {
             return View();
         }
-        
+
+        [HttpPost]
+        public IActionResult CreateTopic(string title, string text)
+        {
+            ClaimsPrincipal principal = HttpContext.User as ClaimsPrincipal;
+            Topic topic = new Topic
+            {
+                Title = title,
+                Text = text,
+                Date = DateTime.Now,
+                UserId = Convert.ToInt32(principal.Claims.Where(p => p.Type == "id").FirstOrDefault()!.Value)
+            };
+            _topicService.AddTopic(topic);
+            return RedirectToAction("Topic", "Forum", topic);
+        }
+
         TopicModel GetTopic(int id)
         {
-            Topic topic = _topicSevice.GetById(id);
+            Topic topic = _topicService.GetById(id);
             TopicModel topicModel = new TopicModel
             {
                 Date = topic.Date,
@@ -83,7 +104,7 @@ namespace RecycleCoin.WebUI.Controllers
                     Text = reply.Text,
                     TopicId = topic.Id,
                     UserId = reply.UserId,
-                    User = _userSevice.GetById(reply.UserId)
+                    User = _userService.GetById(reply.UserId)
                 });
             }
             return topicModel;

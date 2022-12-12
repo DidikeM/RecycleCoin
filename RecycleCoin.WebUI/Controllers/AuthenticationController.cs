@@ -12,7 +12,7 @@ namespace RecycleCoin.WebUI.Controllers
 {
     public class AuthenticationController : Controller
     {
-        IUserSevice _userSevice = InstanceFactory.GetInstance<IUserSevice>();
+        IUserService _userSevice = InstanceFactory.GetInstance<IUserService>();
 
         [AllowAnonymous]
         public IActionResult Login()
@@ -38,6 +38,7 @@ namespace RecycleCoin.WebUI.Controllers
             {
                 var claims = new List<Claim>
                 {
+                    new Claim("id", user.Id.ToString()),
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.Name, user.Username),
                     new Claim(ClaimTypes.Role, user.RoleId.ToString())
@@ -45,7 +46,6 @@ namespace RecycleCoin.WebUI.Controllers
                 var userIdentity = new ClaimsIdentity(claims, "Login");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(userIdentity);
                 await HttpContext.SignInAsync(claimsPrincipal);
-
 
                 //string returnUrl = HttpContext.Request.Query["returnUrl"];
 
@@ -69,6 +69,21 @@ namespace RecycleCoin.WebUI.Controllers
         public IActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult Register(UserModel userModel)
+        {
+            _userSevice.AddUser(new User
+            {
+                Email = userModel.Email,
+                RoleId = 3,
+                Password = userModel.Password,
+                Username = userModel.Username
+            });
+            return RedirectToAction("Login", "Authentication");
+            //return View();
         }
 
         [AllowAnonymous]

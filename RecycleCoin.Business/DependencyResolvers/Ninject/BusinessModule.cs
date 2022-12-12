@@ -24,7 +24,7 @@ namespace RecycleCoin.Business.DependencyResolvers.Ninject
             Bind<IRecycleService>().To<RecycleManager>().InSingletonScope();
             Bind<IRecycleDal>().To<EfRecycleDal>().InSingletonScope();
 
-            Bind<IRecycleDetailSevice>().To<RecycleDetailManager>().InSingletonScope();
+            Bind<IRecycleDetailService>().To<RecycleDetailManager>().InSingletonScope();
             Bind<IRecycleDetailDal>().To<EfRecycleDetailDal>().InSingletonScope();
 
             Bind<IReplyService>().To<ReplyManager>().InSingletonScope();
@@ -33,10 +33,10 @@ namespace RecycleCoin.Business.DependencyResolvers.Ninject
             Bind<IRoleService>().To<RoleManager>().InSingletonScope();
             Bind<IRoleDal>().To<EfRoleDal>().InSingletonScope();
 
-            Bind<ITopicSevice>().To<TopicManager>().InSingletonScope();
+            Bind<ITopicService>().To<TopicManager>().InSingletonScope();
             Bind<ITopicDal>().To<EfTopicDal>().InSingletonScope();
 
-            Bind<IUserSevice>().To<UserManager>().InSingletonScope();
+            Bind<IUserService>().To<UserManager>().InSingletonScope();
             Bind<IUserDal>().To<EfUserDal>().InSingletonScope();
         }
     }

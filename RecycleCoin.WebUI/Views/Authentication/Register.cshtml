@@ -1,4 +1,5 @@
-﻿@{
+﻿@model UserModel
+@{
     ViewData["Title"] = "- Register";
 }
 
@@ -16,38 +17,43 @@
                         <div class="register-title mb-3">
                             Sign up and protect your environment
                         </div>
-                        <form action="">
+                        <form asp-controller="Authentication" asp-action="Register" method="post">
                             <div class="form-group">
                                 <div class="form-floating mb-3">
-                                    <input type="text"
+                                    <input name="Name"
+                                           type="text"
                                            class="form-control"
                                            id="floatingName"
                                            placeholder="Name" />
                                     <label for="floatingInput">Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text"
+                                    <input name="Surname"
+                                           type="text"
                                            class="form-control"
                                            id="floatingSurname"
                                            placeholder="Surname" />
                                     <label for="floatingInput">Surname</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text"
+                                    <input name="Username"
+                                           type="text"
                                            class="form-control"
                                            id="floatingUserName"
-                                           placeholder="Name" />
+                                           placeholder="Username" />
                                     <label for="floatingInput">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="email"
+                                    <input name="Email"
+                                           type="email"
                                            class="form-control"
                                            id="floatingInput"
                                            placeholder="name@example.com" />
                                     <label for="floatingInput">Email address</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password"
+                                    <input name="Password"
+                                           type="password"
                                            class="form-control"
                                            id="floatingPassword"
                                            placeholder="Password" />
@@ -63,14 +69,14 @@
                                     </label>
                                 </div>
 
-                                <button type="button" class="btn-register mb-3">
+                                <button type="submit" class="btn-register mb-3">
                                     Regıster
                                 </button>
                             </div>
                         </form>
                         <hr />
                         <div class="sign-in">
-                            Already have an account? <a asp-area="" asp-controller="Authentication" asp-action="Login">Sign In</a>
+                            Already have an account? <a asp-controller="Authentication" asp-action="Login">Sign In</a>
                         </div>
                     </div>
                 </div>

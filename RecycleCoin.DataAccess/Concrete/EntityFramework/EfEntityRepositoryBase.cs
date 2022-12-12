@@ -24,7 +24,7 @@ namespace RecycleCoin.DataAccess.Concrete.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return filter == null ? context.Set<T>().Count(): context.Set<T>().Count(filter);
+                return filter == null ? context.Set<T>().Count() : context.Set<T>().Count(filter);
             }
         }
 

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace RecycleCoin.Business.Abstract
 {
-    public interface IUserSevice
+    public interface ITopicService
     {
-        void AddUser(User user);
-        User GetByEmailAndPassword(string email, string password);
-        User GetById(int id);
+        void AddTopic(Topic topic);
+        List<Topic> GetAllTopic();
+        Topic GetById(int id);
     }
 }

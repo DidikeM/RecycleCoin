@@ -18,17 +18,16 @@
                         <div class="topic-create-title">
                             <h2>Create a topic</h2>
                             <hr />
-                            <input type="text"
-                                   class="form-control"
-                                   id="topic-title"
-                                   placeholder="Write a topic title " />
-                            <div id="editor"></div>
+                            <form asp-controller="Forum" asp-action="CreateTopic">
+                                <input name="title" type="text" class="form-control" id="topic-title" placeholder="Write a topic title " />
+                                <textarea name="text" id="editor"></textarea>
 
-                            <div id="submit-container">
-                                <button type="submit" class="submit-topics-answer">
-                                    Submit
-                                </button>
-                            </div>
+                                <div id="submit-container">
+                                    <button type="submit" class="submit-topics-answer">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

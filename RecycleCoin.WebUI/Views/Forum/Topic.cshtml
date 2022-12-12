@@ -21,7 +21,7 @@
                     <div class="log-md-8 topic-info-question">
                         <h2>@topic.Title</h2>
                         <p id="topic-question">
-                            @topic.Text
+                            @Html.Raw(System.Web.HttpUtility.HtmlDecode(topic.Text))
                         </p>
                     </div>
 
@@ -45,8 +45,7 @@
                     }
                     <form asp-controller="Forum" asp-action="Topic" method="post">
                         <input type="hidden" name="topicId" value="@topic.Id" />
-                        <input type="hidden" name="userId" value="@topic.UserId" /> @*Burası hatalı düzeltilecek güzel kardeşim denemek için böyle bırakıldı*@
-                        <textarea  id="editor" name="textt"></textarea>
+                        <textarea  id="editor" name="text"></textarea>
 
                         <div id="submit-container">
 

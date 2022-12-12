@@ -24,15 +24,16 @@
 
 .create-topic {
     font-size: 12px;
-    width: 130px;
+    width: 140px;
     background-color: #fff;
     border-color: #3770c8;
     border-radius: 30px;
-    padding: 5px;
+    padding: 10px;
     color: #3770c8;
     transition: 0.5s;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    margin-top: 5px
 }
 
 .title-container .create-topic:hover {
@@ -90,7 +91,7 @@
     font-size: 16px;
     font-weight: 500;
     text-decoration: none;
-    letter-spacing: 0.2;
+    letter-spacing: 0.2px;
 }
 
     .topics .card-body .topics-info-question .topics-info-question-title a:hover {

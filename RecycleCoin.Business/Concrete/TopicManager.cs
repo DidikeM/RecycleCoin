@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RecycleCoin.Business.Concrete
 {
-    public class TopicManager : ITopicSevice
+    public class TopicManager : ITopicService
     {
         IReplyService _replyService = InstanceFactory.GetInstance<IReplyService>();
         ITopicDal _topicDal;

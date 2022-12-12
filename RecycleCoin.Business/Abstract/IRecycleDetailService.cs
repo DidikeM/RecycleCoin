@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecycleCoin.Business.Abstract
 {
-    public interface IRecycleDetailSevice
+    public interface IRecycleDetailService
     {
     }
 }

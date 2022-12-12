@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RecycleCoin.Business.Concrete
 {
-    public class RecycleDetailManager : IRecycleDetailSevice
+    public class RecycleDetailManager : IRecycleDetailService
     {
         IRecycleDetailDal _recycleDetailDal;
 

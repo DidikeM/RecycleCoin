@@ -11,19 +11,15 @@ namespace test
 {
     public class Test
     {
-        IUserSevice userService = InstanceFactory.GetInstance<IUserSevice>();
+        IUserService userService = InstanceFactory.GetInstance<IUserService>();
         IRoleService roleService= InstanceFactory.GetInstance<IRoleService>();
-        ITopicSevice topicSevice = InstanceFactory.GetInstance<ITopicSevice>();
+        ITopicService topicSevice = InstanceFactory.GetInstance<ITopicService>();
         IReplyService replyService = InstanceFactory.GetInstance<IReplyService>();
 
 
         public Test() 
         {
-            Topic topic = topicSevice.GetById(1);
-            foreach (var item in topic.Replies)
-            {
-                Console.WriteLine(item.User.Id);
-            }
+            
         }
     }
 }

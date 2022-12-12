@@ -5,7 +5,6 @@ using System.Diagnostics;
 
 namespace RecycleCoin.WebUI.Controllers
 {
-    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -15,12 +14,14 @@ namespace RecycleCoin.WebUI.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
-
+        [AllowAnonymous]
+        //[Authorize(policy: "AdminClaimPolicy")]
         public IActionResult Contact()
         {
             return View();

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Net;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Services.AddMvc(config =>
     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
     config.Filters.Add(new AuthorizeFilter(policy));
 });
+
+builder.Services.AddAuthorization(x => x.AddPolicy("AdminClaimPolicy", policy => policy.RequireClaim(ClaimTypes.Role, "1")));
+builder.Services.AddAuthorization(x => x.AddPolicy("OperatorClaimPolicy", policy => policy.RequireClaim(ClaimTypes.Role, "2")));
 
 var app = builder.Build();
 

@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="title-container">
                         <h2 class="topics-title">Topics</h2>
-                        <form asp-area="" asp-controller="Forum" asp-action="CreateTopic">
+                        <form asp-area="" asp-controller="Forum" asp-action="CreateTopic" method="get">
                             <button class="create-topic"> 
                                 Create a topic
                             </button>
@@ -43,7 +43,7 @@
                                         <hr />
                                     </div>
                                     <div class="topics-info-lite-question d-flex align-items-center">
-                                        @item.Text
+                                        @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Text))
                                     </div>
                                 </div>
                             </div>
