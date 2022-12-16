@@ -1,5 +1,5 @@
 ﻿function myFunction() {
-    var input, filter, ul, li, a, txtValue;
+    var input, filter, tr, txtValue;
     input = document.getElementById("myInput");
 
     filter = input.value.toUpperCase();

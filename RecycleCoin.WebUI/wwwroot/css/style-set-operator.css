@@ -11,8 +11,40 @@
     padding: 12px 20px 12px 40px;
     transition: width 0.4s ease-in-out;
     margin-bottom: 10px;
+    margin-right: 10px;
 }
 
     input[type="text"]:focus {
         width: 25%;
+    }
+
+.form-select {
+    width: 150px !important;
+    height: 50px !important;
+}
+
+.row-input {
+    display: flex;
+}
+
+.confirm-button {
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    border: none;
+    border-radius: 80px;
+    color: #fff;
+    background-image: linear-gradient( to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100% );
+    transition: 0.8s;
+    background-size: 200% auto;
+    display: block;
+}
+
+    .confirm-button:hover {
+        background-position: right center;
+        color: #fff;
+        text-decoration: none;
     }

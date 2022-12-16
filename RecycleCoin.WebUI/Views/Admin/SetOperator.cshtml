@@ -9,17 +9,20 @@
 
 <div class="row my-5">
     <div class="col">
-        <input type="text"
-               name="search"
-               id="myInput"
-               placeholder="Search..."
-               onkeyup="myFunction()" />
-        <select class="form-select" aria-label="Default select example">
-            <option selected class="disabled">Select role</option>
-            <option value="1">Admin</option>
-            <option value="2">Operator</option>
-            <option value="3">User</option>
-        </select>
+        <div class="row-input">
+            <input type="text"
+                   name="search"
+                   id="myInput"
+                   placeholder="Search..."
+                   onkeyup="myFunction()" />
+            <select class="form-select" aria-label="Default select example">
+                <option selected disabled>Select role</option>
+                <option value="1">Admin</option>
+                <option value="2">Operator</option>
+                <option value="3">User</option>
+            </select>
+            <button type="submit" class="confirm-button">Confirm</button>
+        </div>
         <table class="table bg-white rounded shadow-sm table-hover">
             <thead>
                 <tr>
