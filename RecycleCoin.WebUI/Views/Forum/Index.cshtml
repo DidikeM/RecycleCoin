@@ -1,4 +1,9 @@
-﻿@{
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@model IPagedList<TopicModel>
+
+@{
     ViewData["Title"] = "- Form";
 }
 
@@ -8,7 +13,7 @@
 </head>
 
 @{
-    var list = (List<TopicModel>)ViewBag.TopicModel;
+    //var list = (List<TopicModel>)ViewBag.TopicModel;
 }
 
 <section class="topics">
@@ -19,13 +24,13 @@
                     <div class="title-container">
                         <h2 class="topics-title">Topics</h2>
                         <form asp-area="" asp-controller="Forum" asp-action="CreateTopic" method="get">
-                            <button class="create-topic"> 
+                            <button class="create-topic">
                                 Create a topic
                             </button>
                         </form>
                     </div>
                     <hr />
-                    @foreach (var item in list)
+                    @foreach (var item in Model)
                     {
                         <div class="topics-info">
                             <div class="row">
@@ -51,19 +56,24 @@
                         </div>
                     }
 
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" href="#">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
+                    @*<nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                    </li>
+                    </ul>
+                    </nav>*@
+                    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index", new {page}),new PagedListRenderOptions
+                    {
+                    LiElementClasses=new string[]{"page-item"},
+                    PageClasses=new string[]{"page-link"}
+                    })
                 </div>
             </div>
         </div>

@@ -256,9 +256,9 @@ html {
     box-shadow: 0 2px 8px rgba(55, 112, 200, 0.8);
 }
 
-.navbar-toggler:focus {
-    box-shadow: 0 2px 8px rgba(55, 112, 200, 0.8);
-}
+    .navbar-toggler:focus {
+        box-shadow: 0 2px 8px rgba(55, 112, 200, 0.8);
+    }
 
 /* footer */
 footer {
@@ -278,6 +278,7 @@ footer {
 @media screen and (max-width: 768px) {
 
     /* navbar */
+
     .navbar {
         padding: 20px 0;
     }
@@ -292,7 +293,6 @@ footer {
     }
 
     .navbar-nav > li {
-        align-items: start;
         padding-left: 50px;
     }
 

@@ -1,4 +1,8 @@
-﻿@model TopicModel
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+
+@model dynamic
 
 @{
     ViewData["Title"] = "- Form Answer";
@@ -10,7 +14,7 @@
 </head>
 
 @{
-    var topic = (TopicModel)ViewBag.TopicModel;
+    //var topic = (TopicModel)ViewBag.TopicModel;
 }
 
 <section class="topic-answers">
@@ -19,15 +23,15 @@
             <div class="card">
                 <div class="card-body">
                     <div class="log-md-8 topic-info-question">
-                        <h2>@topic.Title</h2>
+                        <h2>@Model.topic.Title</h2>
                         <p id="topic-question">
-                            @Html.Raw(System.Web.HttpUtility.HtmlDecode(topic.Text))
+                            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.topic.Text))
                         </p>
                     </div>
 
                     <h3>Answers</h3>
                     <hr />
-                    @foreach (var reply in topic.Replies)
+                    @foreach (var reply in Model.replies)
                     {
                         <div class="topic-user-answer">
                             <div class="row">
@@ -44,8 +48,8 @@
                         </div>
                     }
                     <form asp-controller="Forum" asp-action="Topic" method="post">
-                        <input type="hidden" name="topicId" value="@topic.Id" />
-                        <textarea  id="editor" name="text"></textarea>
+                        <input type="hidden" name="topicId" value="@Model.topic.Id" />
+                        <textarea id="editor" name="text"></textarea>
 
                         <div id="submit-container">
 
@@ -53,7 +57,12 @@
                         </div>
                     </form>
 
-                    <nav aria-label="Page navigation example">
+                    @Html.PagedListPager((IPagedList)Model.replies ,page=>Url.Action("Topic", new {Model.topic.Id, page}),new PagedListRenderOptions
+                    {
+                    LiElementClasses=new string[]{"page-item"},
+                    PageClasses=new string[]{"page-link"}
+                    })
+                    @*<nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                             <li class="page-item">
                                 <a class="page-link" href="#">Previous</a>
@@ -65,7 +74,8 @@
                                 <a class="page-link" href="#">Next</a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav>*@
+
                 </div>
             </div>
         </div>

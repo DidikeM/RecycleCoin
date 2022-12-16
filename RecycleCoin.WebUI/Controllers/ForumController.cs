@@ -4,7 +4,9 @@ using RecycleCoin.Business.Abstract;
 using RecycleCoin.Business.DependencyResolvers.Ninject;
 using RecycleCoin.Entities.Concrete.EntityFramework;
 using RecycleCoin.WebUI.Models;
+using System.Dynamic;
 using System.Security.Claims;
+using X.PagedList;
 
 namespace RecycleCoin.WebUI.Controllers
 {
@@ -15,7 +17,7 @@ namespace RecycleCoin.WebUI.Controllers
         private IUserService _userService = InstanceFactory.GetInstance<IUserService>();
 
         [AllowAnonymous]
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
             List<Topic> topics = _topicService.GetAllTopic();
             List<TopicModel> topicModels = new List<TopicModel>();
@@ -33,15 +35,20 @@ namespace RecycleCoin.WebUI.Controllers
                 });
             }
 
-            ViewBag.TopicModel = topicModels;
-            return View();
+            //ViewBag.TopicModel = topicModels;
+            return View(topicModels.ToPagedList(page, 10));
+
         }
 
         [AllowAnonymous]
-        public IActionResult Topic(int id)
+        public IActionResult Topic(int id, int page = 1)
         {
-            ViewBag.TopicModel = GetTopic(id);
-            return View();
+            //ViewBag.TopicModel = GetTopic(topicid);
+            dynamic model = new ExpandoObject();
+            TopicModel topicModel = GetTopic(id);
+            model.topic = topicModel;
+            model.replies = topicModel.Replies.ToPagedList(page, 3);
+            return View(model);
         }
 
 
@@ -58,8 +65,11 @@ namespace RecycleCoin.WebUI.Controllers
                     UserId = Convert.ToInt32(principal.Claims.Where(p => p.Type == "id").FirstOrDefault()!.Value)
                 });
             }
-            ViewBag.TopicModel = GetTopic(topicid);
-            return View();
+            //ViewBag.TopicModel = GetTopic(topicid);
+            dynamic model = new ExpandoObject();
+            model.topic = GetTopic(topicid);
+            model.replis = model.topic.Replis;
+            return View(model);
         }
 
 

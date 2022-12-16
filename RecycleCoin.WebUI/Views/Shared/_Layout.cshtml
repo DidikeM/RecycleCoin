@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims;
+
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="utf-8" />
@@ -44,13 +46,45 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto">
+                    @if (User.Identity!.IsAuthenticated)
+                    {
+                        <li class="d-lg-none"><a class="nav-link" href="#">Profile</a><span></span></li>
+                    }
                     <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a><span></span></li>
                     <li><a class="nav-link" asp-area="" asp-controller="Forum" asp-action="Index">Forum</a><span></span></li>
                     <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a><span></span></li>
-                </div>
-                <a asp-controller="Authentication" asp-action="LogOut" class="btn btn-secondary d-sm d-block ms-5 animate__animated animate__swing"><span>Sıgn Out</span> </a>
-                <a asp-area="" asp-controller="Authentication" asp-action="Login" class="btn btn-secondary d-sm d-block ms-5 animate__animated animate__swing"><span>Sıgn In</span></a>
+
+                    @if (User.Identity!.IsAuthenticated)
+                    {
+                        @*<div class="collapse navbar-collapse" id="navbarSupportedContent">*@
+
+                        <li class="nav-item dropdown d-none d-lg-block">
+                            <a class="nav-link dropdown-toggle second-text fw-bold"
+                           href="#"
+                           id="navbarDropdown"
+                           role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                                <i class="fas fa-user me-2"></i>@User.Claims.FirstOrDefault(p=>p.Type == ClaimTypes.Name)!.Value
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
+                                <li><a asp-controller="Authentication" asp-action="LogOut" class="dropdown-item"><span>Sıgn Out</span> </a><span></span></li>
+                            </ul>
+                        </li>
+                        <li class="d-lg-none"><a class="nav-link" asp-controller="Authentication" asp-action="LogOut"><span>Sıgn Out</span> </a><span></span></li>
+                        @*</div>*@
+
+                    }
+                    else
+                    {
+                        <a asp-area="" asp-controller="Authentication" asp-action="Login" class="btn btn-secondary d-sm d-block ms-5 animate__animated animate__swing"><span>Sıgn In</span></a>
+
+                    }
+
+                </ul>
             </div>
         </div>
     </nav>
