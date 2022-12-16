@@ -10,5 +10,12 @@ namespace RecycleCoin.WebUI.Controllers
         {
             return View();
         }
+
+
+        public IActionResult SetOperator()
+        {
+            return View();
+        }
+
     }
 }

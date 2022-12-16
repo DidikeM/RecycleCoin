@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "_ManagerLayout";
+}
+
+<head>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/style-set-operator.css" />
+</head>
+
+<div class="row my-5">
+    <div class="col">
+        <input type="text"
+               name="search"
+               id="myInput"
+               placeholder="Search..."
+               onkeyup="myFunction()" />
+        <select class="form-select" aria-label="Default select example">
+            <option selected class="disabled">Select role</option>
+            <option value="1">Admin</option>
+            <option value="2">Operator</option>
+            <option value="3">User</option>
+        </select>
+        <table class="table bg-white rounded shadow-sm table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" width="50">ID</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">E-Mail</th>
+                </tr>
+            </thead>
+            <tbody id="myTBody">
+                <tr>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>  
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="~/js/search-input.js"></script>
