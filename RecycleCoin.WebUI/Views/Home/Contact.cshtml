@@ -28,23 +28,23 @@
                 </div>
             </div>
             <div class="contactForm">
-                <div class="formBox">
+                <form class="formBox" asp-controller="Home" asp-action="Contact" method="post">
                     <div class="inputBox w50">
-                        <input type="text" name="" required />
+                        <input type="text" name="Name" required />
                         <span>Name</span>
                     </div>
 
                     <div class="inputBox w50">
-                        <input type="text" name="" required />
+                        <input type="text" name="Email" required />
                         <span>Email Address</span>
                     </div>
                     <div class="inputBox w100">
-                        <textarea type="text" name="" required></textarea>
+                        <textarea type="text" name="Text" required></textarea>
                         <span>Write your message here...</span>
                     </div>
 
-                    <button type="button" class="btn btn-submit">Submit</button>
-                </div>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </form>
             </div>
         </div>
     </div>

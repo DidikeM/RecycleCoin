@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RecycleCoin.Business.Abstract;
+using RecycleCoin.Business.DependencyResolvers.Ninject;
+using RecycleCoin.Entities.Concrete.EntityFramework;
 using RecycleCoin.WebUI.Models;
 using System.Diagnostics;
 
@@ -8,6 +11,7 @@ namespace RecycleCoin.WebUI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        IContactService contactService = InstanceFactory.GetInstance<IContactService>();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -24,6 +28,13 @@ namespace RecycleCoin.WebUI.Controllers
         //[Authorize(policy: "AdminClaimPolicy")]
         public IActionResult Contact()
         {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult Contact(Contact contact)
+        {
+            contactService.Add(contact);
             return View();
         }
 

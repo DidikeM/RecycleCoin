@@ -15,6 +15,8 @@ public partial class RecycleCoinContext : DbContext
     {
     }
 
+    public virtual DbSet<Contact> Contacts { get; set; }
+
     public virtual DbSet<Customer> Customers { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
@@ -37,6 +39,11 @@ public partial class RecycleCoinContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Contact>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("contact_pkey");
+        });
+
         modelBuilder.Entity<Customer>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("Customer_pkey");

@@ -15,6 +15,9 @@ namespace RecycleCoin.Business.DependencyResolvers.Ninject
     {
         public override void Load()
         {
+            Bind<IContactService>().To<ContactManager>().InSingletonScope();
+            Bind<IContactDal>().To<EfContactDal>().InSingletonScope();
+
             Bind<ICustomerService>().To<CustomerManager>().InSingletonScope();
             Bind<ICustomerDal>().To<EfCustomerDal>().InSingletonScope();
 
