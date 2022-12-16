@@ -22,14 +22,26 @@ namespace RecycleCoin.Business.Concrete
             _UserDal.Add(user);
         }
 
+        public List<User> GetAll()
+        {
+            return _UserDal.GetAll();
+        }
+
         public User GetByEmailAndPassword(string email, string password)
         {
-            return _UserDal.Get(p=> p.Email == email && p.Password == password);
+            return _UserDal.Get(p => p.Email == email && p.Password == password);
         }
 
         public User GetById(int id)
         {
             return _UserDal.Get(p => p.Id == id);
+        }
+
+        public void UpdateRole(int userId, int roleID)
+        {
+            User user = GetById(userId);
+            user.RoleId = roleID;
+            _UserDal.Update(user);
         }
     }
 }

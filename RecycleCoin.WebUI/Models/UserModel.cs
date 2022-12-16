@@ -11,6 +11,7 @@ namespace RecycleCoin.WebUI.Models
         public string Password { get; set; } = null!;
         public int RoleId { get; set; }
         public string Email { get; set; } = null!;
+        public string Role { get; set; } = null!;
     }
 }
 

@@ -1,4 +1,4 @@
-﻿function myFunction() {
+﻿function search() {
     var input, filter, tr, txtValue;
     input = document.getElementById("myInput");
 
@@ -24,4 +24,13 @@
             tr[i].style.display = "none";
         }
     }
+}
+
+function selectUser(selRow) {
+    document.getElementById("userId").value = selRow.cells[0].innerHTML;
+}
+
+function selectRole(selTag) {
+    var x = selTag.options[selTag.selectedIndex].value;
+    document.getElementById("roleId").value = x;
 }

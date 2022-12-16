@@ -1,4 +1,6 @@
-﻿@{
+﻿@model dynamic
+
+@{
     Layout = "_ManagerLayout";
 }
 
@@ -14,14 +16,19 @@
                    name="search"
                    id="myInput"
                    placeholder="Search..."
-                   onkeyup="myFunction()" />
-            <select class="form-select" aria-label="Default select example">
+                   onkeyup="search()" />
+            <select onchange="selectRole(this)" class="form-select" aria-label="Default select example">
                 <option selected disabled>Select role</option>
                 <option value="1">Admin</option>
                 <option value="2">Operator</option>
                 <option value="3">User</option>
             </select>
-            <button type="submit" class="confirm-button">Confirm</button>
+            <form asp-controller="Admin" asp-action="SetOperator" method="post">
+                <input id="userId" name="userId" type="hidden" />
+                <input id="roleId" name="roleId" type="hidden" />
+                <button type="submit" class="confirm-button">Confirm</button>
+            </form>
+
         </div>
         <table class="table bg-white rounded shadow-sm table-hover">
             <thead>
@@ -33,15 +40,18 @@
                 </tr>
             </thead>
             <tbody id="myTBody">
-                <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>  
+                @foreach (var user in Model.users)
+                {
+                    <tr onclick="selectUser(this)">
+                        <th id="tableId" scope="row">@user.Id</th>
+                        <td>@user.Role</td>
+                        <td>@user.Username</td>
+                        <td>@user.Email</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
 
-<script src="~/js/search-input.js"></script>
+<script src="~/js/setoperator.js"></script>

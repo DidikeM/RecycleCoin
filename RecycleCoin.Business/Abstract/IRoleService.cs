@@ -10,5 +10,6 @@ namespace RecycleCoin.Business.Abstract
     public interface IRoleService
     {
         void AddRole(Role role);
+        List<Role> GetAll();
     }
 }

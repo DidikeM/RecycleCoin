@@ -22,5 +22,10 @@ namespace RecycleCoin.Business.Concrete
         {
             _roleDal.Add(role);
         }
+
+        public List<Role> GetAll()
+        {
+            return _roleDal.GetAll();
+        }
     }
 }
