@@ -42,6 +42,29 @@ html {
     border-radius: 30px;
 }
 
+.btn-grad {
+    background-image: linear-gradient( to right, #3770c8 0%, #3a7bd5 50%, #2056a7 100% );
+    font-size: 12px;
+    padding: 15px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 50px;
+    width: 250px;
+    border: none;
+    display: block;
+}
+
+    .btn-grad:hover {
+        background-position: right center;
+        color: #fff;
+        text-decoration: none;
+    }
+
 .btn-primary,
 .btn-outline-secondary {
     padding: 12px 20px;
@@ -310,11 +333,13 @@ footer {
     }
 
     /* buttons */
-    .buttons .btn {
+    .buttons .btn{
         display: block;
         margin: 1rem 0;
     }
-
+    .btn-grad{
+        width:100%
+    }
     .buttons .ms-3 {
         margin-left: 0 !important;
     }

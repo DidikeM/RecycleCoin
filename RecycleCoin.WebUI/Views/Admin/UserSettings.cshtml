@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "_ManagerLayout";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/style-user-settings.css" />
+</head>
+
+<div class="row my-5">
+    <div class="col">
+        <form action="" method="post">
+            <div class="settings-inputs">
+                <input type="text"
+                       name=""
+                       placeholder="SHA 256 address"
+                       class="settings-input" />
+            </div>
+            <div class="settings-inputs">
+                <input type="password"
+                       id="password"
+                       name="password"
+                       class="settings-input"
+                       placeholder="Password" /><input class="form-check-input"
+                                                       type="checkbox"
+                                                       value=""
+                                                       id="show-password"
+                                                       onclick="showpassword()" />
+            </div>
+            <button type="submit" class="btn-grad">Confirm</button>
+        </form>
+    </div>
+</div>
+
+<!-- Custom js file-->
+<script src="~/js/user-settings.js"></script>

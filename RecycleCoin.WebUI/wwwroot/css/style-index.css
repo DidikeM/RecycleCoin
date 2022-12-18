@@ -1,7 +1,7 @@
 ﻿/* Landing section */
 
 section.landing {
-    padding: 80px 0;
+    padding: 50px 0;
 }
 
     section.landing .text {
@@ -9,11 +9,16 @@ section.landing {
         font-size: 48px;
         line-height: 73px;
         color: var(--black);
-        padding-top: 100px;
+        padding-top: 90px;
     }
+
+        section.landing .text .shadow-text {
+            text-shadow: 1px 0px 1px #ccc, 0px 1px 1px #eee, 2px 1px 1px #ccc, 1px 2px 1px #eee, 3px 2px 1px #ccc, 2px 3px 1px #eee, 4px 3px 1px #ccc, 3px 4px 1px #eee, 5px 4px 1px #ccc, 4px 5px 1px #eee, 6px 5px 1px #ccc, 5px 6px 1px #eee, 7px 6px 1px #ccc;
+        }
 
         section.landing .text .gradient-text {
             font-size: 50px;
+            font-weight: 700;
             background-image: -webkit-linear-gradient(90deg, #2056a7, #3770c8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -84,12 +89,13 @@ section.about .info-1 {
         border-radius: 60px;
         text-align: center;
         height: 100%;
+        width:90%;
         box-shadow: 0 2px 6px rgba(55, 112, 200, 0.8);
     }
 
     .earn-coin img {
-        width: 150px;
-        height: 150px;
+        width: 130px;
+        height: 130px;
     }
 
     .earn-coin p {

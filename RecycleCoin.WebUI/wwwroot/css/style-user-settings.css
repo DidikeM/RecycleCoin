@@ -1,0 +1,49 @@
+﻿.settings-inputs .settings-input {
+    padding: 10px 5px 10px 15px;
+    border-radius: 15px;
+    width: 450px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+}
+
+.settings-inputs #password {
+    width: 250px;
+}
+
+#show-password {
+    width: 25px;
+    height: 25px;
+    margin: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.form-check-input:checked[type=checkbox] {
+    background-color: #fff;
+    background-image: url("../images/check-button.png");
+    background-size: 15px 15px;
+}
+
+.btn-grad {
+    background-image: linear-gradient( to right, #3a7bd5 0%, #00d2ff 51%, #00d2ff 100% );
+    font-size: 14px;
+    padding: 10px 5px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 50px;
+    width: 120px;
+    border: none;
+    display: block;
+}
+
+    .btn-grad:hover {
+        background-position: right center;
+        color: #fff;
+        text-decoration: none;
+    }

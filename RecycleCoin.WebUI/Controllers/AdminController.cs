@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RecycleCoin.Business.Abstract;
 using RecycleCoin.Business.DependencyResolvers.Ninject;
@@ -37,6 +39,11 @@ namespace RecycleCoin.WebUI.Controllers
                 users = GetUsers(),
             };
             return View(model);
+        }
+
+        public IActionResult UserSettings()
+        {
+            return View();
         }
 
         private List<UserModel> GetUsers()
