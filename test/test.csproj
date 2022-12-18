@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.ServiceModel.Http" Version="4.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RecycleCoin.API\RecycleCoin.API.csproj" />
     <ProjectReference Include="..\RecycleCoin.Business\RecycleCoin.Business.csproj" />
     <ProjectReference Include="..\RecycleCoin.Entities\RecycleCoin.Entities.csproj" />
   </ItemGroup>
