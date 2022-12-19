@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RecycleCoin.Business.Abstract;
 using RecycleCoin.Business.DependencyResolvers.Ninject;
+using RecycleCoin.Business.ValidationRules;
 using RecycleCoin.Entities.Concrete.EntityFramework;
 using RecycleCoin.WebUI.Models;
 using System.Security.Claims;
@@ -32,10 +34,20 @@ namespace RecycleCoin.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(UserModel userModel)
         {
-            User user = _userSevice.GetByEmailAndPassword(userModel.Email, userModel.Password);
-
-            if (user != null)
+            User user = new User
             {
+                Email = userModel.Email,
+                Password = userModel.Password
+            };
+
+            LoginValidator wv = new LoginValidator();
+            ValidationResult results = wv.Validate(user);
+
+
+            if (results.IsValid)
+            {
+                user = _userSevice.GetByEmailAndPassword(userModel.Email, userModel.Password);
+
                 var claims = new List<Claim>
                 {
                     new Claim("id", user.Id.ToString()),
@@ -57,12 +69,17 @@ namespace RecycleCoin.WebUI.Controllers
                 //{
                 //    return RedirectToAction("Index", "Home");
                 //}
+
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                return View();
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
             }
+            return View();
         }
 
         [AllowAnonymous]
@@ -75,15 +92,36 @@ namespace RecycleCoin.WebUI.Controllers
         [AllowAnonymous]
         public IActionResult Register(UserModel userModel)
         {
-            _userSevice.AddUser(new User
+            User user = new User
             {
+                Username =userModel.Username,
                 Email = userModel.Email,
-                RoleId = 3,
-                Password = userModel.Password,
-                Username = userModel.Username
-            });
-            return RedirectToAction("Login", "Authentication");
-            //return View();
+                Password = userModel.Password
+            };
+
+            LoginValidator wv = new LoginValidator();
+            ValidationResult results = wv.Validate(user);
+
+            if (results.IsValid)
+            {
+                _userSevice.AddUser(new User
+                {
+                    Email = userModel.Email,
+                    RoleId = 3,
+                    Password = userModel.Password,
+                    Username = userModel.Username
+                });
+                return RedirectToAction("Login", "Authentication");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+
+            return View();
         }
 
         [AllowAnonymous]
