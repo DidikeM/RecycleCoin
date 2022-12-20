@@ -22,45 +22,45 @@
                             <div class="form-group">
                                 <div class="form-floating mb-3">
                                     @Html.TextBoxFor(x=>x.Username, new{@class="form-control",@required  = "required", id="floatingUserName", placeholder="Username"})
-                                    @Html.ValidationMessageFor(x=>x.Username, "", new{@class="text-danger"})
+                                    @Html.ValidationMessageFor(x=>x.Username, "", new{@class="text-primary"})
                                     @*<input name="Username"
-                                           type="text"
-                                           class="form-control"
-                                           id="floatingUserName"
-                                           placeholder="Username" />*@
+                                type="text"
+                                class="form-control"
+                                id="floatingUserName"
+                                placeholder="Username" />*@
                                     <label for="floatingUserName">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     @Html.TextBoxFor(x=>x.Email, new{@class="form-control",@required  = "required",id="floatingInput", placeholder="name@example.com"})
-                                    @Html.ValidationMessageFor(x=>x.Email, "", new{@class="text-danger"})
-                                   @* <input name="Email"
-                                           type="email"
-                                           class="form-control"
-                                           id="floatingInput"
-                                           placeholder="name@example.com" />*@
+                                    @Html.ValidationMessageFor(x=>x.Email, "", new{@class="text-primary"})
+                                    @* <input name="Email"
+                                type="email"
+                                class="form-control"
+                                id="floatingInput"
+                                placeholder="name@example.com" />*@
                                     <label for="floatingInput">Email address</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    @Html.TextBoxFor(x=>x.Password, new{@class="form-control",@required  = "required",id="floatingPassword", placeholder="Password"})
-                                    @Html.ValidationMessageFor(x=>x.Password, "", new{@class="text-danger"})
-                                   @* <input name="Password"
-                                           type="password"
-                                           class="form-control"
-                                           id="floatingPassword"
-                                           placeholder="Password" />*@
+                                    @Html.TextBoxFor(x=>x.Password, new{@class="form-control",@required  = "required",id="floatingPassword", placeholder="Password", onkeyup="validate_password()"})
+                                    @Html.ValidationMessageFor(x=>x.Password, "", new{@class="text-primary"})
+                                    @* <input name="Password"
+                                type="password"
+                                class="form-control"
+                                id="floatingPassword"
+                                placeholder="Password" />*@
                                     <label for="floatingPassword">Password</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="password"
-                                           class="form-control"
-                                           id="floatingConfirmPassword"
-                                           placeholder="ConfirmPassword" required/>
+                                       class="form-control"
+                                       id="floatingConfirmPassword"
+                                       placeholder="ConfirmPassword" required onkeyup="validate_password()" />
                                     <label for="floatingConfirmPassword">
                                         Confirm Password
                                     </label>
                                 </div>
-
-                                <button type="submit" class="btn-register mb-3">
+                                <span id="wrong_pass_alert"></span>
+                                <button type="submit" class="btn-register mb-3" id="create">
                                     Regıster
                                 </button>
                             </div>
@@ -76,6 +76,5 @@
     </div>
 </section>
 
-<script>
-
-</script>
+<!-- Custom js file-->
+<script src="~/js/confirm-password.js"></script>

@@ -2,6 +2,10 @@
 <head>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/style-index.css" />
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
 
 <!-- Landing section-->
@@ -28,6 +32,123 @@
     </div>
 </section>
 
+<!-- api section -->
+<section class="bitcoin-api">
+    <div class="container">
+        <div class="slider-container">
+            <div class="swiper apiService">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="name">
+                            <div class="name__icon">
+                                <img src="~/images/api/btc.png" alt="btc-img" />
+                            </div>
+                            <span>BITCOIN</span>
+                        </div>
+                        <p class="coin-value" id="bitcoin"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="name">
+                            <div class="name__icon">
+                                <img src="~/images/api/lite.png" alt="lite-img" />
+                            </div>
+                            <span>LITECOIN</span>
+                        </div>
+                        <p class="coin-value" id="litecoin"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="name">
+                            <div class="name__icon">
+                                <img src="~/images/api/eth.png" alt="eth-img" />
+                            </div>
+                            <span>ETHEREUM</span>
+                        </div>
+                        <p class="coin-value" id="ethereum"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="name">
+                            <div class="name__icon">
+                                <img src="~/images/api/doge.png" alt="doge-img" />
+                            </div>
+                            <span>DOGECOIN</span>
+                        </div>
+                        <p class="coin-value" id="dogecoin"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="name">
+                            <div class="name__icon">
+                                <img src="~/images/api/xrp.png" alt="ripple-img" />
+                            </div>
+                            <span>RIPPLE</span>
+                        </div>
+                        <p class="coin-value" id="ripple"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="name">
+                            <div class="name__icon">
+                                <img src="~/images/api/tether.png" alt="tether-img" />
+                            </div>
+                            <span>TETHER</span>
+                        </div>
+                        <p class="coin-value" id="tether"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="name">
+                            <div class="name__icon">
+                                <img src="~/images/api/solana.png" alt="solana-img" />
+                            </div>
+                            <span>SOLANA</span>
+                        </div>
+                        <p class="coin-value" id="solana"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="name">
+                            <div class="name__icon">
+                                <img src="~/images/api/trx.png" alt="tron-img" />
+                            </div>
+                            <span>TRON</span>
+                        </div>
+                        <p class="coin-value" id="tron"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="name">
+                            <div class="name__icon">
+                                <img src="~/images/api/cardano.png" alt="cardano-img" />
+                            </div>
+                            <span>CARDANO</span>
+                        </div>
+                        <p class="coin-value" id="cardano"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About section -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="row info-1">
+            <!-- Image -->
+            <div class="col-md-6">
+                <img src="~/images/tradingtools.png"
+                     alt="About us"
+                     class="w-100" />
+            </div>
+
+            <!-- Text -->
+            <div class="col-md-6">
+                <div class="text-information">
+                    <h5>Let us introduce ourselves</h5>
+                    <p>
+                        We believe that there should be no such thing as waste in the world. Together we can keep our environment clean by developing new solutions and new uses for recyclables.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Earn Coin section-->
 <section class="earn-coin">
     <div class="container">
@@ -39,8 +160,7 @@
                     <div class="card-body">
                         <h4>Sign Up</h4>
                         <p>
-                            Earn Recycle Coins, then store them securely in your wallet or
-                            easily send them to your friends
+                            Sign up for your free Recycle wallet and follow some simple steps to create your profile
                         </p>
                     </div>
                 </div>
@@ -63,8 +183,8 @@
                     <div class="card-body">
                         <h4>Earn Coin</h4>
                         <p>
-                            Sign up for your free Recycle wallet and follow our easy
-                            process to create your profile
+                            Earn Recycle Coins, then store them securely in your wallet or
+                            easily send them to your friends
                         </p>
                     </div>
                 </div>
@@ -72,35 +192,6 @@
         </div>
     </div>
 </section>
-
-<!-- About section -->
-<section class="about" id="about">
-    <div class="container">
-        <div class="row info-1">
-            <!-- Image -->
-            <div class="col-md-6">
-                <img src="~/images/tradingtools.png"
-                     alt="About us"
-                     class="w-100" />
-            </div>
-
-            <!-- Text -->
-            <div class="col-md-6">
-                <div class="text-information">
-                    <h5>Let's introduce ourselves</h5>
-                    <p>
-                        We believe that there should be no such thing as waste in the
-                        world. Together we keep our environment clean by developing new
-                        solutions and new uses for recyclables.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Client opinion section -->
-<section class="client-area"></section>
 
 <!-- Support questions -->
 <section class="support-questions" id="support">
@@ -129,11 +220,7 @@
                                  aria-labelledby="headingOne"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <strong>It is a decentralized cryptocurrency.</strong> It
-                                    is open source software; identified by encrypted and
-                                    anonymous codes. As it uses peer to peer (P2P) technology,
-                                    it enables all kinds of financial transactions to be
-                                    recorded easily between peers in a secure environment.
+                                    Recycle Coin is the software created to prevent unnecessary use of resources and to reduce the amount of waste and make materials reusable, both ensuring the protection of natural resources and playing an important role in the economy of the user.
                                 </div>
                             </div>
                         </div>
@@ -154,8 +241,8 @@
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     Recycling objects brought by the user are entered into the
-                                    system by the operator, and points are added to the
-                                    address of the person who brings the waste.
+                                    system by the operator, and carbon points are added to the
+                                    account of the person who brings the trash.
                                 </div>
                             </div>
                         </div>
@@ -193,3 +280,39 @@
         </div>
     </div>
 </section>
+
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<!-- Custom js -->
+<script>
+    var swiper = new Swiper(".apiService", {
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        mousewheel: true,
+        keyboard: true,
+        cssMode: true,
+
+        breakpoints: {
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 15,
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+            },
+            1024: {
+                slidesPerView: 6,
+                spaceBetween: 30,
+            },
+        },
+    });
+</script>
