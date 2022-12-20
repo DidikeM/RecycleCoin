@@ -20,30 +20,35 @@
                         </div>
                         <hr />
                         <img src="~/images/user-logo.png" alt="login" class="mb-3" />
-                        <form asp-controller="Authentication" asp-action="Login" method="post">
+                        @using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
+                        {
                             <div class="form-group">
                                 <div class="form-floating mb-3">
-                                    <input name="Email"
-                                           type="email"
-                                           class="form-control"
-                                           id="floatingInput"
-                                           placeholder="name@example.com" />
-                                    <label for="floatingInput">Email address</label>
+                                    @Html.TextBoxFor(x=>x.Email, new{@class="form-control",@required  = "required",id="floatingInput", placeholder="name@example.com"})
+                                    @Html.ValidationMessageFor(x=>x.Email, "", new{@class="text-primary"})
+                                    @* <input name="Email"
+                                        type="email"
+                                        class="form-control"
+                                        id="floatingInput"
+                                        placeholder="name@example.com" />*@
+                                        <label for="floatingInput">Email address</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    <input name="password"
-                                           type="password"
-                                           class="form-control"
-                                           id="floatingPassword"
-                                           placeholder="Password" />
-                                    <label for="floatingPassword">Password</label>
+                                    @Html.TextBoxFor(x=>x.Password,"", new{@class="form-control",@required  = "required",id="floatingPassword", placeholder="Password"})
+                                    @Html.ValidationMessageFor(x=>x.Password, "", new{@class="text-primary"})
+                                    @*<input name="password"
+                                        type="password"
+                                        class="form-control"
+                                        id="floatingPassword"
+                                        placeholder="Password" />*@
+                                        <label for="floatingPassword">Password</label>
                                 </div>
 
                                 <button type="submit" class="btn-sign-in mb-3">
                                     Sıgn In
                                 </button>
                             </div>
-                        </form>
+                        }
                         <div class="forgot-password mb-3">
                             or <a asp-area="" asp-controller="Authentication" asp-action="ForgotPassword">Forgot Password</a>
                         </div>
