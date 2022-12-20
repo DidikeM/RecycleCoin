@@ -1,0 +1,14 @@
+syntax = "proto3";
+package objectDetectionService;
+
+service ObjectDetector {
+    rpc detectObject (ImageProvided) returns (Detection);
+}
+message ImageProvided{
+    bytes imageBytes = 1;
+}
+
+message Detection{
+    bytes imageEditedBytes = 1;
+    int32 objectIndex = 2;
+}

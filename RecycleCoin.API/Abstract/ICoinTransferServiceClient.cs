@@ -15,6 +15,5 @@ namespace RecycleCoin.API.Abstract
     {
         [OperationContract]
         public string CoinTransfer(string address, int coinAmount);
-
     }
 }

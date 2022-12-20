@@ -11,12 +11,15 @@ using RecycleCoin.API.Abstract;
 
 namespace RecycleCoin.API.Concrete
 {
-    public class CoinTransferServiceClient:ClientBase<ICoinTransferServiceClient>
+    [ServiceContract]
+    public class CoinTransferServiceClient : ClientBase<ICoinTransferServiceClient>, ICoinTransferServiceClient
     {
 
-        public CoinTransferServiceClient(Binding binding, EndpointAddress remoteAddress):base(binding, remoteAddress) { }
-        public string CoinTransfer(string address, int coinAmount) => Channel.CoinTransfer(address, coinAmount);
-        
-
+        public CoinTransferServiceClient() : base(new BasicHttpBinding(), new EndpointAddress("http://127.0.0.1:7335/wsdl")) { }
+        [OperationContract]
+        public string CoinTransfer(string address, int coinAmount)
+        {
+            return Channel.CoinTransfer(address, coinAmount);
+        }
     }
 }

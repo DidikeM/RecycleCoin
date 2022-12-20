@@ -7,8 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\objectDetectionService.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.21.5" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.49.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.49.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Medella.SoapCore" Version="1.0.30" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.10.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\objectDetectionService.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>
