@@ -27,22 +27,15 @@
     <Compile Include="objectDetectionService_pb2_grpc.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
     <Content Include="detectObjectF\classes.txt" />
-    <Content Include="detectObjectF\DetectedPhoto.jpg" />
     <Content Include="detectObjectF\yolov3_custom.cfg" />
     <Content Include="detectObjectF\yolov3_custom_final.weights" />
-    <Content Include="detectObjectF\__pycache__\nonCustomDetection.cpython-39.pyc" />
     <Content Include="proto\objectDetectionService.proto" />
-    <Content Include="requriements.txt" />
-    <Content Include="__pycache__\objectDetectionService_pb2.cpython-39.pyc" />
-    <Content Include="__pycache__\objectDetectionService_pb2_grpc.cpython-39.pyc" />
+    <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="detectObjectF\" />
-    <Folder Include="detectObjectF\__pycache__\" />
     <Folder Include="proto\" />
-    <Folder Include="__pycache__\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
