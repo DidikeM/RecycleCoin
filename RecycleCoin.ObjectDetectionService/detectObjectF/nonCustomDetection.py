@@ -23,7 +23,7 @@ def runDetection(byteString):
 
     # Define color and font for bboxes
     font = cv2.FONT_HERSHEY_PLAIN
-    colors = np.random.uniform(0, 255, size=(2, 3))
+    colors = [(255,0,0),(0,255,0),(0,0,255)]
 
 
     height, width, _ = img.shape
@@ -43,7 +43,7 @@ def runDetection(byteString):
             scores = detection[5:]
             class_id = np.argmax(scores)
             confidence = scores[class_id]
-            if confidence > 0.6:
+            if confidence > 0.5:
                 center_x = int(detection[0] * width)
                 center_y = int(detection[1] * height)
                 w = int(detection[2] * width)
@@ -63,7 +63,7 @@ def runDetection(byteString):
             x, y, w, h = boxes[i]
             label = str(classes[class_ids[i]])
             confidence = str(round(confidences[i], 2))
-            color = colors[i]
+            color = colors[np.random.randint(0,3)]
             cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
             objectIndex = i + 1
             cv2.putText(
