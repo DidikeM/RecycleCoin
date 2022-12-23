@@ -54,9 +54,14 @@ namespace test
 
         public Test()
         {
-            var response = ObjectDetectService.ObjectDetect(Image.FromFile("../../../img.jpg"));
+            //var response = ObjectDetectService.ObjectDetect(Image.FromFile("../../../img.jpg"));
 
+            //var asd = new ObjectDetectService();
 
+            //var c = asd.ObjectDetect(Image.FromFile("../../../img.jpg"));
+            //c.Wait();
+
+            
 
             #region resim bilmemn
 

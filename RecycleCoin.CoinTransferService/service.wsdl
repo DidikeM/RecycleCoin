@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <definitions> must be the root of the WSDL document -->
+<wsdl:definitions targetNamespace="http://tempuri.org/" 
+  xmlns:s="http://www.w3.org/2001/XMLSchema" 
+  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+  xmlns:tns="http://tempuri.org/" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" 
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <!-- WSDL TYPES: definition of the data types that are used in the web service -->
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CoinTransferRequest">
+        <s:complexType>
+          <s:sequence>
+            <!--VERILEN DEGERLER-->
+            <s:element minOccurs="1" maxOccurs="1" name="address" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="coinAmount" type="s:integer"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CoinTransferResponse">
+        <s:complexType>
+          <s:sequence>
+            <!--GERI DONUS DEGERLERI-->
+            <s:element minOccurs="1" maxOccurs="1" name="result" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <!-- MESSAGES: defines the data being exchanged between the service and client -->
+  <wsdl:message name="CoinTransferSoapIn">
+    <wsdl:part name="parameters" element="tns:CoinTransferRequest"/>
+  </wsdl:message>
+  <wsdl:message name="CoinTransferSoapOut">
+    <wsdl:part name="parameters" element="tns:CoinTransferResponse"/>
+  </wsdl:message>
+  <!-- PORT TYPES: defines the complete communication operation (one way/rounfd trip) -->
+  <wsdl:portType name="CoinTransferSoapPort">
+    <!-- The operation name must be the same as the one specified in the service object -->
+    <wsdl:operation name="CoinTransfer">
+      <wsdl:input message="tns:CoinTransferSoapIn"/>
+      <wsdl:output message="tns:CoinTransferSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <!-- BINDING: provides details on how a portType operation will actually be transmitted -->
+  <wsdl:binding name="CoinTransferServiceSoapBinding" type="tns:CoinTransferSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CoinTransfer">
+      <soap:operation soapAction="CoinTransfer" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CoinTransferServiceSoap12Binding" type="tns:CoinTransferSoapPort">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CoinTransfer">
+      <soap12:operation soapAction="CoinTransfer" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <!-- SERVICE:  -->
+  <wsdl:service name="CoinTransferService">
+    <wsdl:port name="CoinTransferServiceSoapPort" binding="tns:CoinTransferServiceSoapBinding">
+      <soap:address location="http://localhost:7335/wsdl"/>
+    </wsdl:port>
+    <wsdl:port name="CoinTransferServiceSoap12Port" binding="tns:CoinTransferServiceSoap12Binding">
+      <soap12:address location="http://localhost:7335/wsdl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
