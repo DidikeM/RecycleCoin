@@ -8,6 +8,8 @@ using RecycleCoin.Business.DependencyResolvers.Ninject;
 using RecycleCoin.Business.ValidationRules;
 using RecycleCoin.Entities.Concrete.EntityFramework;
 using RecycleCoin.WebUI.Models;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 
 namespace RecycleCoin.WebUI.Controllers
@@ -94,7 +96,7 @@ namespace RecycleCoin.WebUI.Controllers
         {
             User user = new User
             {
-                Username =userModel.Username,
+                Username = userModel.Username,
                 Email = userModel.Email,
                 Password = userModel.Password
             };
@@ -127,6 +129,45 @@ namespace RecycleCoin.WebUI.Controllers
         [AllowAnonymous]
         public IActionResult ForgotPassword()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword(string email)
+        {
+            var user = _userSevice.GetByEmail(email);
+
+            if (user != null)
+            {
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                client.Credentials = new NetworkCredential("recyclecointeams@gmail.com", "iignxktfiszbfqva");
+                client.Port = 587;
+                //client.Host = "smtp.gmail.com";
+                client.EnableSsl = true;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network; 
+                MailMessage mail = new MailMessage();
+                mail.To.Add(user.Email);
+                mail.From = new MailAddress("recyclecointeams@gmail.com");
+                mail.Subject = "Forgot Password";
+                mail.IsBodyHtml = true;
+                mail.Body += "<b>Hello</b>," + user.Username + "<br/>" + "Your Recycle Coin account password :" + user.Password;
+
+                try
+                {
+                    client.Send(mail);
+                    return RedirectToAction("Login", "Authentication");
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            else
+            {
+                ViewBag.message = false;
+            }
             return View();
         }
 

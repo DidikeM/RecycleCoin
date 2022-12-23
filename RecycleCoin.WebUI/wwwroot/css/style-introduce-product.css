@@ -1,0 +1,52 @@
+﻿h2, h3 {
+    margin-top: 0;
+}
+
+form {
+    margin-top: 15px;
+}
+
+    form > input {
+        margin-right: 15px
+    }
+
+.camera-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.panel-heading {
+    font-size: 25px;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.panel-body {
+    font-size: 18px;
+    letter-spacing: 0.2px;
+}
+
+.button-camera {
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    border: none;
+    border-radius: 80px;
+    color: #fff;
+    background-image: linear-gradient( to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100% );
+    transition: 0.8s;
+    background-size: 200% auto;
+    display: block;
+    margin: auto;
+}
+
+    .button-camera:hover {
+        background-position: right center;
+        color: #fff;
+        text-decoration: none;
+    }
