@@ -12,6 +12,7 @@ namespace RecycleCoin.Business.Abstract
         void AddUser(User user);
         List<User> GetAll();
         User GetByEmailAndPassword(string email, string password);
+        User GetByEmail(string email);
         User GetById(int id);
         void UpdateRole(int userId, int roleID);
     }

@@ -13,13 +13,19 @@ namespace RecycleCoin.WebUI.Controllers
     public class AdminController : Controller
     {
         IUserService _userService = InstanceFactory.GetInstance<IUserService>();
-        IRoleService _roleService= InstanceFactory.GetInstance<IRoleService>();
+        IRoleService _roleService = InstanceFactory.GetInstance<IRoleService>();
+
+        private readonly IWebHostEnvironment _environment;
+
+        public AdminController(IWebHostEnvironment environment)
+        {
+            _environment = environment;
+        }
 
         public IActionResult Index()
         {
             return View();
         }
-
 
         public IActionResult SetOperator()
         {
@@ -44,6 +50,67 @@ namespace RecycleCoin.WebUI.Controllers
         public IActionResult UserSettings()
         {
             return View();
+        }
+
+        public IActionResult IntroduceProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult IntroduceProduct(string name)
+        {
+            try
+            {
+                var files = HttpContext.Request.Form.Files;
+                if (files != null)
+                {
+                    foreach (var file in files)
+                    {
+                        if (file.Length > 0)
+                        {
+                            var fileName = file.FileName;
+                            var myUniqueFileName = Convert.ToString(Guid.NewGuid());
+                            var fileExtension = Path.GetExtension(fileName);
+                            var newFileName = string.Concat(myUniqueFileName, fileExtension);
+                            var filePath = Path.Combine(_environment.WebRootPath, "CameraPhotos") + $@"\{newFileName}";
+                            if (!string.IsNullOrEmpty(filePath))
+                            {
+                                StoreInFolder(file, filePath);
+                            }
+                            var imageBytes = System.IO.File.ReadAllBytes(filePath);
+                            if (imageBytes != null)
+                            {
+                                StoreInDatabase(imageBytes);
+                            }
+                        }
+                    }
+                    return Json(true);
+                }
+                else
+                {
+                    return Json(false);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            };
+        }
+
+        private void StoreInFolder(IFormFile file, string fileName)
+        {
+            using (FileStream fs = System.IO.File.Create(fileName))
+            {
+                file.CopyTo(fs);
+                fs.Flush();
+            }
+        }
+
+        private void StoreInDatabase(byte[] imageBytes)
+        {
+            //Saving captured into database
         }
 
         private List<UserModel> GetUsers()

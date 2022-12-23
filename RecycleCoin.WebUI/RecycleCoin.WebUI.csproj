@@ -20,4 +20,8 @@
     <ProjectReference Include="..\RecycleCoin.Entities\RecycleCoin.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\CameraPhotos\" />
+  </ItemGroup>
+
 </Project>

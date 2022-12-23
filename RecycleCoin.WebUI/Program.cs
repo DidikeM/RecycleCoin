@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Net;
 using System.Security.Claims;
+using System.Threading;
+
+Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
 
 var builder = WebApplication.CreateBuilder(args);
 
