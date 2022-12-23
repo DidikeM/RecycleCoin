@@ -1,4 +1,5 @@
-﻿@{
+﻿@model dynamic
+@{
     Layout = "_ManagerLayout";
 }
 
@@ -16,11 +17,14 @@
             <div class="panel-body">
                 <div id="my_camera"></div>
                 <form>
-                    <input type="button" class="btn button-camera" value="Take Snapshot" onclick="take_snapshot()" />
+                    <input type="button" class="btn button-camera" value="Take Snapshot" onclick="send_photo()" />
                 </form>
             </div>
         </div>
     </div>
+    <form id="myform" method="post" asp-controller="Admin" asp-action="IntroduceProduct">
+        <input id="mydata" type="hidden" name="imageString" value="" />
+    </form>
     <div>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -28,6 +32,10 @@
             </div>
             <div class="panel-body">
                 <div id="results">Your captured image will appear here...</div>
+                @if (Model != null)
+                {
+                    <img src="data:image/jpeg;base64,@Model.Image" />
+                }
             </div>
             <br />
             <br />
@@ -39,10 +47,10 @@
 
 <script type="text/javascript">
     Webcam.set({
-        width: 320,
-        height: 240,
+        width: 800,
+        height: 450,
         image_format: 'jpeg',
-        jpeg_quality: 90
+        jpeg_quality: 100
     });
     Webcam.attach("#my_camera");
 </script>
@@ -55,10 +63,17 @@
                 data_uri +
                 '"/>';
             Webcam.upload(data_uri,
-                '/Admin/IntroduceProduct',
-                function (code, text) {
-                    alert("Photo Captured")
-                })
+
+                '/Admin/IntroduceProduct'
+            )
+        })
+    }
+    function send_photo() {
+        Webcam.snap(function (data_uri) {
+            var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+
+            document.getElementById('mydata').value = raw_image_data;
+            document.getElementById('myform').submit();
         })
     }
 </script>

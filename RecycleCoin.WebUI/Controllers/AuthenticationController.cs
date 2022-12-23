@@ -49,30 +49,33 @@ namespace RecycleCoin.WebUI.Controllers
             if (results.IsValid)
             {
                 user = _userSevice.GetByEmailAndPassword(userModel.Email, userModel.Password);
-
-                var claims = new List<Claim>
+                if (user != null)
                 {
-                    new Claim("id", user.Id.ToString()),
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Name, user.Username),
-                    new Claim(ClaimTypes.Role, user.RoleId.ToString())
-                };
-                var userIdentity = new ClaimsIdentity(claims, "Login");
-                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(userIdentity);
-                await HttpContext.SignInAsync(claimsPrincipal);
+                    var claims = new List<Claim>
+                    {
+                        new Claim("id", user.Id.ToString()),
+                        new Claim(ClaimTypes.Email, user.Email),
+                        new Claim(ClaimTypes.Name, user.Username),
+                        new Claim(ClaimTypes.Role, user.RoleId.ToString())
+                    };
+                    var userIdentity = new ClaimsIdentity(claims, "Login");
+                    ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(userIdentity);
+                    await HttpContext.SignInAsync(claimsPrincipal);
 
-                //string returnUrl = HttpContext.Request.Query["returnUrl"];
+                    //string returnUrl = HttpContext.Request.Query["returnUrl"];
 
-                //if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                //{
-                //    return Redirect(returnUrl);
-                //}
-                //else
-                //{
-                //    return RedirectToAction("Index", "Home");
-                //}
+                    //if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    //{
+                    //    return Redirect(returnUrl);
+                    //}
+                    //else
+                    //{
+                    //    return RedirectToAction("Index", "Home");
+                    //}
 
-                return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
+                }
+
             }
             else
             {
@@ -145,7 +148,7 @@ namespace RecycleCoin.WebUI.Controllers
                 client.Port = 587;
                 //client.Host = "smtp.gmail.com";
                 client.EnableSsl = true;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network; 
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 MailMessage mail = new MailMessage();
                 mail.To.Add(user.Email);
                 mail.From = new MailAddress("recyclecointeams@gmail.com");

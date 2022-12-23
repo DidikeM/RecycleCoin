@@ -34,7 +34,7 @@
                                         <label for="floatingInput">Email address</label>
                                 </div>
                                 <div class="form-floating mb-4">
-                                    @Html.TextBoxFor(x=>x.Password,"", new{@class="form-control",@required  = "required",id="floatingPassword", placeholder="Password"})
+                                    @Html.PasswordFor(x=>x.Password, new{@class="form-control",@required  = "required",id="floatingPassword", placeholder="Password"})
                                     @Html.ValidationMessageFor(x=>x.Password, "", new{@class="text-primary"})
                                     @*<input name="password"
                                         type="password"

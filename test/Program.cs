@@ -8,16 +8,9 @@ using test;
 
 Test test = new Test();
 
-var response = await ObjectDetectService.ObjectDetect(Image.FromFile("../../../img.jpg"));
+var response = await ObjectDetectService.DetectObject(Image.FromFile("../../../img.jpg"));
 
 
-byte[] imageData = response.ImageEditedBytes.ToByteArray();
-Image image;
-// Create a stream from the byte array
-using (MemoryStream ms = new MemoryStream(imageData))
-{
-    // Create an image from the stream
-    image = Image.FromStream(ms);
-}
-var imm = new Bitmap(image);
+
+var imm = new Bitmap(response.DetectedImage!);
 imm.Save("../../../blablaimg.jpg", ImageFormat.Jpeg);
