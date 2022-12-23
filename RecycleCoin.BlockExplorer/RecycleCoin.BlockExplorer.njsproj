@@ -6,7 +6,7 @@
     <RootNamespace>RecycleCoin.BlockExplorer</RootNamespace>
     <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
     <ScriptArguments>--stack-size=10000</ScriptArguments>
-    <NodejsPort>3001</NodejsPort>
+    <NodejsPort>7336</NodejsPort>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
