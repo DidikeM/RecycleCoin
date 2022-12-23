@@ -9,6 +9,7 @@ using RecycleCoin.Business.ValidationRules;
 using RecycleCoin.Entities.Concrete.EntityFramework;
 using RecycleCoin.WebUI.Models;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Mail;
 using System.Security.Claims;
 
@@ -17,6 +18,7 @@ namespace RecycleCoin.WebUI.Controllers
     public class AuthenticationController : Controller
     {
         IUserService _userSevice = InstanceFactory.GetInstance<IUserService>();
+        ICustomerService _customerService = InstanceFactory.GetInstance<ICustomerService>();
 
         [AllowAnonymous]
         public IActionResult Login()
@@ -99,23 +101,25 @@ namespace RecycleCoin.WebUI.Controllers
         {
             User user = new User
             {
-                Username = userModel.Username,
                 Email = userModel.Email,
-                Password = userModel.Password
+                RoleId = 3,
+                Password = userModel.Password,
+                Username = userModel.Username
             };
 
-            LoginValidator wv = new LoginValidator();
-            ValidationResult results = wv.Validate(user);
+            LoginValidator validationRules = new LoginValidator();
+            ValidationResult results = validationRules.Validate(user);
 
             if (results.IsValid)
             {
-                _userSevice.AddUser(new User
+                _userSevice.AddUser(user);
+
+                _customerService.AddCustomer(new Customer
                 {
-                    Email = userModel.Email,
-                    RoleId = 3,
-                    Password = userModel.Password,
-                    Username = userModel.Username
-                });
+                    CarbonBalance = 0,
+                    UserId = user.Id,
+                }) ;
+                
                 return RedirectToAction("Login", "Authentication");
             }
             else

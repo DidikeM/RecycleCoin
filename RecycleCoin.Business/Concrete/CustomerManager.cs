@@ -1,5 +1,6 @@
 ﻿using RecycleCoin.Business.Abstract;
 using RecycleCoin.DataAccess.Abstract;
+using RecycleCoin.Entities.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,11 @@ namespace RecycleCoin.Business.Concrete
         public CustomerManager(ICustomerDal customerDal)
         {
             _customerDal = customerDal;
+        }
+
+        public void AddCustomer(Customer customer)
+        {
+            _customerDal.Add(customer);
         }
     }
 }
