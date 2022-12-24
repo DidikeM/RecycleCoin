@@ -65,7 +65,7 @@ def runDetection(byteString):
             confidence = str(round(confidences[i], 2))
             color = colors[np.random.randint(0,3)]
             cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
-            objectIndex = i + 1
+            objectIndex = class_ids[i]+1
             cv2.putText(
                 img,
                 label + " " + confidence,
