@@ -1,0 +1,142 @@
+﻿@model IntroduceProductModel
+@{
+    Layout = "_ManagerLayout";
+}
+
+<head>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/style-introduce-product.css" />
+</head>
+
+<div class="camera-container">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Camera
+            </div>
+            <div class="panel-body">
+                <div id="my_camera"></div>
+                <input type="button" class="btn button-camera" value="Take Snapshot" onclick="send_photo()" />
+            </div>
+        </div>
+    </div>
+    <form id="myform" method="post" asp-controller="Operator" asp-action="IntroduceProduct">
+        @if (Model != null)
+        {
+                @for (int i = 0; i < Model.RecycleDetailModels!.Count(); i++)
+                {
+                    
+                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductId)
+                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductName)
+                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductPoint)
+                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductQuantity)
+                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].SubTotalPrice)
+                }
+        }
+        <input id="mydata" type="hidden" name="DetectedImageBase64" value="" />
+    </form>
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Captured Photo
+            </div>
+            <div class="panel-body">
+                @if (Model != null)
+                {
+                    if (Model.detectedObject != null)
+                    {
+                        <img src="data:image/jpeg;base64,@Model.detectedObject.DetectedImageBase64" />
+                    }
+                }
+            </div>
+            <form asp-controller="Operator" asp-action="IntroduceProduct" method="post">
+                <input type="hidden" />
+                @if (Model != null)
+                {
+                    @Html.HiddenFor(m=>m.detectedObject!.ObjectIndex)
+                    @Html.HiddenFor(m=>m.detectedObject!.DetectedImageBase64)
+                    @for (int i = 0; i < Model.RecycleDetailModels!.Count(); i++)
+                    {
+                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductId)
+                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductName)
+                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductPoint)
+                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductQuantity)
+                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].SubTotalPrice)
+                    }
+                    if (Model.detectedObject != null)
+                    {
+                        if (Model.detectedObject.ObjectIndex != -1)
+                        {
+                            <input type="submit" class="btn button-camera" value="nesneyi ekle" />
+                        }
+                    }
+                }
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <table class="table bg-white rounded shadow-sm table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="col">Nesne Adı</th>
+                <th scope="col">Nesne Puanı</th>
+                <th scope="col">Geri dönüşüm sayısı</th>
+                <th scope="col">Nesneden Gelen Toplam puan</th>
+            </tr>
+        </thead>
+        <tbody id="myTBody">
+
+            <form>
+                @if (Model != null)
+                {
+                    @for (int i = 0; i < Model.RecycleDetailModels!.Count(); i++)
+                    {
+                    <tr>
+                        <td>@Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductId)</td>
+                        <td>@Html.DisplayFor(m=>m.RecycleDetailModels![i].ProductName)</td>
+                        <td>@Html.DisplayFor(m=>m.RecycleDetailModels![i].ProductPoint)</td>
+                        <td>@Html.DisplayFor(m=>m.RecycleDetailModels![i].ProductQuantity)</td>
+                        <td>@Html.DisplayFor(m=>m.RecycleDetailModels![i].SubTotalPrice)</td>
+                    </tr>
+                    }
+                }
+            </form>
+        </tbody>
+    </table>
+</div>
+<script src="~/webcamjs/webcam.js"></script>
+
+<script type="text/javascript">
+    Webcam.set({
+        width: 600,
+        height: 450,
+        image_format: 'jpeg',
+        jpeg_quality: 100
+    });
+    Webcam.attach("#my_camera");
+</script>
+
+<script type="text/javascript">
+    //function take_snapshot() {
+    //    Webcam.snap(function (data_uri) {
+    //        document.getElementById("results").innerHTML =
+    //            '<img src="' +
+    //            data_uri +
+    //            '"/>';
+    //        Webcam.upload(data_uri,
+
+    //            '/Operator/IntroduceProduct'
+    //        )
+    //    })
+    //}
+    function send_photo() {
+        Webcam.snap(function (data_uri) {
+            var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+
+            document.getElementById('mydata').value = raw_image_data;
+            document.getElementById('myform').submit();
+        })
+    }
+</script>

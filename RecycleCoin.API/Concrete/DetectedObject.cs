@@ -11,8 +11,11 @@ namespace RecycleCoin.API.Concrete
     {
         public int ObjectIndex { get; set; }
         public Image? DetectedImage  { get; set; }
-        public string? DetectedImageBase64 { get; set; } 
-
+        public string? DetectedImageBase64 { get; set; }
+        public DetectedObject()
+        {
+            ObjectIndex= -1;
+        }
 
     }
 }

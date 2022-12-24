@@ -24,6 +24,7 @@ namespace test
         IRoleService roleService = InstanceFactory.GetInstance<IRoleService>();
         ITopicService topicSevice = InstanceFactory.GetInstance<ITopicService>();
         IReplyService replyService = InstanceFactory.GetInstance<IReplyService>();
+        IProductService productService= InstanceFactory.GetInstance<IProductService>();
 
         //public static async Task<Detection?> ObjectDetect(Image image)
         //{
@@ -54,6 +55,18 @@ namespace test
 
         public Test()
         {
+
+
+
+
+
+
+
+
+
+
+
+
             //var response = ObjectDetectService.ObjectDetect(Image.FromFile("../../../img.jpg"));
 
             //var asd = new ObjectDetectService();
@@ -61,7 +74,6 @@ namespace test
             //var c = asd.ObjectDetect(Image.FromFile("../../../img.jpg"));
             //c.Wait();
 
-            
 
             #region resim bilmemn
 
@@ -80,8 +92,6 @@ namespace test
             //imm.Save("../../../blablaimg.jpg", ImageFormat.Jpeg);
 
             #endregion
-
-
 
 
             //Image image = Image.FromFile("image.jpg");

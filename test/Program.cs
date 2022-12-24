@@ -8,9 +8,9 @@ using test;
 
 Test test = new Test();
 
-var response = await ObjectDetectService.DetectObject(Image.FromFile("../../../img.jpg"));
+//var response = await ObjectDetectService.DetectObject(Image.FromFile("../../../img.jpg"));
 
 
 
-var imm = new Bitmap(response.DetectedImage!);
-imm.Save("../../../blablaimg.jpg", ImageFormat.Jpeg);
+//var imm = new Bitmap(response.DetectedImage!);
+//imm.Save("../../../blablaimg.jpg", ImageFormat.Jpeg);

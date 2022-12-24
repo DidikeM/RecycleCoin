@@ -16,7 +16,7 @@ namespace RecycleCoin.DataAccess.Concrete.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return context.Set<T>().FirstOrDefault(filter);
+                return context.Set<T>().FirstOrDefault(filter)!;
             }
         }
 
@@ -28,7 +28,7 @@ namespace RecycleCoin.DataAccess.Concrete.EntityFramework
             }
         }
 
-        public List<T> GetAll(Expression<Func<T, bool>> filter = null)
+        public List<T> GetAll(Expression<Func<T, bool>> filter = null!)
         {
             using (TContext context = new TContext())
             {

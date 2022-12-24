@@ -118,7 +118,7 @@ namespace RecycleCoin.WebUI.Controllers
                 {
                     CarbonBalance = 0,
                     UserId = user.Id,
-                }) ;
+                });
                 
                 return RedirectToAction("Login", "Authentication");
             }
