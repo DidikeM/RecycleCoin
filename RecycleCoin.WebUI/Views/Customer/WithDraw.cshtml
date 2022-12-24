@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "_ManagerLayout";
+}
+
+<head>
+    <!-- Custom CSS -->
+    <style>
+        .btn-grad {
+            background-image: linear-gradient( to right, #3a7bd5 0%, #00d2ff 51%, #00d2ff 100% );
+            font-size: 14px;
+            padding: 10px 5px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #eee;
+            border-radius: 50px;
+            width: 120px;
+            border: none;
+            display: block;
+        }
+
+            .btn-grad:hover {
+                background-position: right center;
+                color: #fff;
+                text-decoration: none;
+            }
+    </style>
+</head>
+
+@*
+total carbon puan label
+cekmek istenen miktar textbox
+textbox SHA 256 adresi
+label çekmek istediginz Carbon point su kadar Recycle Coine eşit
+button confirm*@
+
+<table class="table table-borderless">
+    <tbody>
+        <form method="post">
+        <tr>
+            <th>Total Carbon Point:</th>
+            <td><label for="TotalCarbonPoint" class="form-label">...</label></td>
+
+        </tr>
+        <tr>
+            <th>Amount Desired:</th>
+            <td><input type="text" class="form-control" id="amountDesired" placeholder="Amount Desired"></td>
+
+        </tr>
+        <tr>
+            <th>SHA 256 Address:</th>
+            <td><input type="text" class="form-control" id="sha256Address" placeholder="Your SHA-256 Address"></td>
+        </tr>
+        <tr>
+            <td colspan="2">The amount of Carbon Points you want to withdraw is equal to the amount of ... Recycle Coins</td>
+        </tr>
+        <tr>
+            <td colspan="2"><button type="submit" class="btn-grad">Confirm</button></td>
+        </tr>
+        </form>
+    </tbody>
+</table>
+

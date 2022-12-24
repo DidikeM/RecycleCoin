@@ -6,17 +6,23 @@
 <head>
     <!-- Custom CSS -->
     <link href="~/css/style-set-operator.css" rel="stylesheet" />
+    <style>
+        .focusedTr {
+            background-color: #3770c8;
+            color: white;
+        }
+    </style>
 </head>
 
 <div>
-    <table class="table bg-white rounded shadow-sm table-hover">
+    <table class="table bg-white rounded-lg shadow-sm table-hover">
         <thead>
-            <tr>
+            <tr class="table-primary text-muted">
                 <th></th>
-                <th scope="col">Nesne Adı</th>
-                <th scope="col">Nesne Puanı</th>
-                <th scope="col">Geri dönüşüm sayısı</th>
-                <th scope="col">Nesneden Gelen Toplam puan</th>
+                <th>Object Name</th>
+                <th>Object Point</th>
+                <th>Recycle quantity</th>
+                <th>Total point from Object</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +31,7 @@
                 <input id="userId" name="userId" type="hidden" />
                 @if (Model != null)
                 {
-                    @for (int i = 0; i < Model.recycleDetailModels.Count(); i++)
+                    @for (int i = 0; i < Model.recycleDetailModels!.Count(); i++)
                     {
                     <tr>
                         <td>@Html.HiddenFor(m=>m.recycleDetailModels[i].ProductId)</td>
@@ -53,7 +59,7 @@
         </div>
         <table class="table bg-white rounded shadow-sm table-hover">
             <thead>
-                <tr>
+                <tr class="table-primary text-muted">
                     <th scope="col" width="50">ID</th>
                     <th scope="col">Username</th>
                     <th scope="col">E-Mail</th>
@@ -63,7 +69,7 @@
                 @foreach (var user in Model.UserModels)
                 {
                     <tr onclick="selectUser(this)">
-                        <th id="tableId" scope="row">@user.Id</th>
+                        <th id="tableId">@user.Id</th>
                         <td>@user.Username</td>
                         <td>@user.Email</td>
                     </tr>
@@ -72,42 +78,4 @@
         </table>
     </div>
 </div>
-
-
-<script>
-    function search() {
-        var input, filter, tr;
-        input = document.getElementById("myInput");
-
-        filter = input.value.toUpperCase();
-
-        tbody = document.getElementById("myTBody");
-        tr = tbody.getElementsByTagName("tr");
-
-        for (i = 0; i < tr.length; i++) {
-            let doHas = false;
-            let tds = tr[i].getElementsByTagName("td");
-            for (let t = 0; t < tds.length; t++) {
-                let td = tds[t];
-                let content = td.textContent;
-                if (content.toUpperCase().indexOf(filter) > -1) {
-                    doHas = true;
-                }
-            }
-
-            if (doHas) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-
-    function selectUser(selRow) {
-        document.getElementById("userId").value = selRow.cells[0].innerHTML;
-    }
-
-    function submit_form() {
-        document.getElementById('myform').submit();
-    }
-</script>
+<script src="~/js/set-recycle-to-user.js"></script>

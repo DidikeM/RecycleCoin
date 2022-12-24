@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Recycle Coin</title>
     <link rel="shortcut icon"
-          href="assets/img/favicon-32x32.png"
+          href="~/images/favicon-32x32.png"
           type="image/x-icon" />
 
     <!-- Bootstrap CSS -->
@@ -39,7 +39,7 @@
                 </a>
                 <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-users me-2"></i>List Users</a>
-                <a href="#"
+                <a asp-controller="Customer" asp-action="WithDraw"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-money-bill-transfer me-2"></i>WithDraw</a>
                 <a asp-controller="Admin" asp-action="SetOperator"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-reply me-2"></i>Set Operator</a>
