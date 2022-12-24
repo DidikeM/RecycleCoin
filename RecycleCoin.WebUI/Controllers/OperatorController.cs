@@ -196,6 +196,7 @@ namespace RecycleCoin.WebUI.Controllers
                 });
                 customer.CarbonBalance += recycleDetailModel.SubTotalPrice;
             }
+            _customerService.Update(customer);
             return View();
         }
     }
