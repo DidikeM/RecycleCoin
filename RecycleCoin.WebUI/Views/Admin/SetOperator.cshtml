@@ -7,6 +7,12 @@
 <head>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/style-set-operator.css" />
+    <style>
+        .focusedTr {
+            background-color: #3770c8;
+            color:white;
+        }
+    </style>
 </head>
 
 <div class="row my-5">
@@ -32,7 +38,7 @@
         </div>
         <table class="table bg-white rounded shadow-sm table-hover">
             <thead>
-                <tr>
+                <tr class="table-primary text-muted">
                     <th scope="col" width="50">ID</th>
                     <th scope="col">Role</th>
                     <th scope="col">Username</th>
@@ -56,3 +62,19 @@
 
 <!-- Custom js file-->
 <script src="~/js/set-operator.js"></script>
+<script>
+    let trs = document.querySelectorAll("#myTBody > tr");
+    let currentTr1;
+    for (i = 0; i < trs.length; i++) {
+        console.log("donuyo");
+        let currentTr = trs[i];
+        currentTr.addEventListener('click', function (e) {
+            if (currentTr1) {
+                currentTr1.classList.toggle("focusedTr");
+            }
+            currentTr1 = currentTr;
+            currentTr1.className = "focusedTr";
+            console.log("eklendi");
+        })
+    }
+</script>
