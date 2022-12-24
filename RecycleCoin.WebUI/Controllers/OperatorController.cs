@@ -65,7 +65,8 @@ namespace RecycleCoin.WebUI.Controllers
                         SubTotalPrice = product.Price
                     });
                 }
-                detectedObject = null!;
+                //detectedObject = null!;
+                detectedObject.ObjectIndex = -1;
             }
             #region image to base64
             //Bitmap img = new Bitmap(response.DetectedImage!);

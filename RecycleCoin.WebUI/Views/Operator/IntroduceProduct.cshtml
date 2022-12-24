@@ -16,25 +16,24 @@
             </div>
             <div class="panel-body">
                 <div id="my_camera"></div>
-                <input type="button" class="btn button-camera" value="Take Snapshot" onclick="send_photo()" />
+                <input type="button" class="btn button-camera" value="Take Snapshot" onclick="@( Model!=null ? "set_photoindex();" : "")send_photo();" />
             </div>
         </div>
     </div>
-    <form id="myform" method="post" asp-controller="Operator" asp-action="IntroduceProduct">
-        @if (Model != null)
-        {
-                @for (int i = 0; i < Model.RecycleDetailModels!.Count(); i++)
-                {
-                    
-                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductId)
-                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductName)
-                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductPoint)
-                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductQuantity)
-                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].SubTotalPrice)
-                }
-        }
-        <input id="mydata" type="hidden" name="DetectedImageBase64" value="" />
-    </form>
+    @*<form id="myform" method="post" asp-controller="Operator" asp-action="IntroduceProduct">
+    @if (Model != null)
+    {
+    @for (int i = 0; i < Model.RecycleDetailModels!.Count(); i++)
+    {
+    @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductId)
+    @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductName)
+    @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductPoint)
+    @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductQuantity)
+    @Html.HiddenFor(m=>m.RecycleDetailModels![i].SubTotalPrice)
+    }
+    }
+    <input id="mydata" type="hidden" name="DetectedImageBase64" value="" />
+    </form>*@
     <div>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -43,32 +42,56 @@
             <div class="panel-body">
                 @if (Model != null)
                 {
-                    if (Model.detectedObject != null)
+                    @if (Model.detectedObject.ObjectIndex != -1)
                     {
                         <img src="data:image/jpeg;base64,@Model.detectedObject.DetectedImageBase64" />
                     }
                 }
             </div>
+            @if (Model != null)
+            {
+                @if (Model.detectedObject != null)
+                {
+                    @if (Model.detectedObject.ObjectIndex != -1)
+                    {
+                        <input type="submit" class="btn button-camera" value="nesneyi ekle" onclick="submit_form()" />
+                    }
+                }
+            }
+            @*@if (Model != null)
+            {
             <form asp-controller="Operator" asp-action="IntroduceProduct" method="post">
-                <input type="hidden" />
+            @Html.HiddenFor(m=>m.detectedObject!.ObjectIndex)
+            @Html.HiddenFor(m=>m.detectedObject!.DetectedImageBase64)
+            @for (int i = 0; i < Model.RecycleDetailModels!.Count(); i++)
+            {
+            @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductId)
+            @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductName)
+            @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductPoint)
+            @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductQuantity)
+            @Html.HiddenFor(m=>m.RecycleDetailModels![i].SubTotalPrice)
+            }
+            @if (Model.detectedObject != null)
+            {
+            @if (Model.detectedObject.ObjectIndex != -1)
+            {
+            <input type="submit" class="btn button-camera" value="nesneyi ekle" />
+            }
+            }
+            </form>
+            }*@
+            <form id="myform" asp-controller="Operator" asp-action="IntroduceProduct" method="post">
+                <input type="hidden" name="detectedObject.DetectedImageBase64" id="detectedObject_DetectedImageBase64" />
                 @if (Model != null)
                 {
-                    @Html.HiddenFor(m=>m.detectedObject!.ObjectIndex)
-                    @Html.HiddenFor(m=>m.detectedObject!.DetectedImageBase64)
+                    <input type="hidden" name="detectedObject.ObjectIndex" id="detectedObject_ObjectIndex" value="@Model.detectedObject.ObjectIndex" />
                     @for (int i = 0; i < Model.RecycleDetailModels!.Count(); i++)
                     {
-                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductId)
-                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductName)
-                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductPoint)
-                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductQuantity)
-                        @Html.HiddenFor(m=>m.RecycleDetailModels![i].SubTotalPrice)
-                    }
-                    if (Model.detectedObject != null)
-                    {
-                        if (Model.detectedObject.ObjectIndex != -1)
-                        {
-                            <input type="submit" class="btn button-camera" value="nesneyi ekle" />
-                        }
+                        <input type="hidden" name="RecycleDetailModels[@i].ProductId" id="RecycleDetailModels_@(i)_ProductId" value="@Model.RecycleDetailModels[@i].ProductId" />
+                        <input type="hidden" name="RecycleDetailModels[@i].ProductName" id="RecycleDetailModels_@(i)_ProductName" value="@Model.RecycleDetailModels[@i].ProductName" />
+                        <input type="hidden" name="RecycleDetailModels[@i].ProductPoint" id="RecycleDetailModels_@(i)_ProductPoint" value="@Model.RecycleDetailModels[@i].ProductPoint" />
+                        <input type="hidden" name="RecycleDetailModels[@i].ProductQuantity" id="RecycleDetailModels_@(i)_ProductQuantity" value="@Model.RecycleDetailModels[@i].ProductQuantity" />
+                        <input type="hidden" name="RecycleDetailModels[@i].SubTotalPrice" id="RecycleDetailModels_@(i)_SubTotalPrice" value="@Model.RecycleDetailModels[@i].SubTotalPrice" />
                     }
                 }
             </form>
@@ -87,12 +110,10 @@
             </tr>
         </thead>
         <tbody id="myTBody">
-
-            <form>
-                @if (Model != null)
+            @if (Model != null)
+            {
+                @for (int i = 0; i < Model.RecycleDetailModels!.Count(); i++)
                 {
-                    @for (int i = 0; i < Model.RecycleDetailModels!.Count(); i++)
-                    {
                     <tr>
                         <td>@Html.HiddenFor(m=>m.RecycleDetailModels![i].ProductId)</td>
                         <td>@Html.DisplayFor(m=>m.RecycleDetailModels![i].ProductName)</td>
@@ -100,9 +121,8 @@
                         <td>@Html.DisplayFor(m=>m.RecycleDetailModels![i].ProductQuantity)</td>
                         <td>@Html.DisplayFor(m=>m.RecycleDetailModels![i].SubTotalPrice)</td>
                     </tr>
-                    }
                 }
-            </form>
+            }
         </tbody>
     </table>
 </div>
@@ -135,8 +155,14 @@
         Webcam.snap(function (data_uri) {
             var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
 
-            document.getElementById('mydata').value = raw_image_data;
+            document.getElementById('detectedObject_DetectedImageBase64').value = raw_image_data;
             document.getElementById('myform').submit();
         })
+    }
+    function set_photoindex() {
+        document.getElementById('detectedObject_ObjectIndex').value = -1;
+    }
+    function submit_form() {
+        document.getElementById('myform').submit();
     }
 </script>
