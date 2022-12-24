@@ -10,5 +10,6 @@ namespace RecycleCoin.Business.Abstract
     public interface ICustomerService
     {
         void AddCustomer(Customer customer);
+        Customer GetByUserId(int userID);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using RecycleCoin.Business.Abstract;
 using RecycleCoin.DataAccess.Abstract;
+using RecycleCoin.Entities.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,16 @@ namespace RecycleCoin.Business.Concrete
 {
     public class RecycleManager : IRecycleService
     {
-        IRecycleDal recycleDal;
+        IRecycleDal _recycleDal;
 
         public RecycleManager(IRecycleDal recycleDal)
         {
-            this.recycleDal = recycleDal;
+            _recycleDal = recycleDal;
+        }
+
+        public void AddRecycle(Recycle recycle)
+        {
+            _recycleDal.Add(recycle);
         }
     }
 }

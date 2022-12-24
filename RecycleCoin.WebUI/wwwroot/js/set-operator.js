@@ -1,5 +1,5 @@
 ﻿function search() {
-    var input, filter, tr, txtValue;
+    var input, filter, tr;
     input = document.getElementById("myInput");
 
     filter = input.value.toUpperCase();

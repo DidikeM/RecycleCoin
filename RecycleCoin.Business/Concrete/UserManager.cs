@@ -48,5 +48,10 @@ namespace RecycleCoin.Business.Concrete
             user.RoleId = roleID;
             _UserDal.Update(user);
         }
+
+        public List<User> GetByRoleId(int roleId)
+        {
+            return _UserDal.GetAll(p=>p.RoleId == roleId);
+        }
     }
 }

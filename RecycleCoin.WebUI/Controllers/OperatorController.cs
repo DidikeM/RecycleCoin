@@ -7,12 +7,17 @@ using RecycleCoin.Business.Concrete;
 using RecycleCoin.WebUI.Models;
 using RecycleCoin.Business.Abstract;
 using RecycleCoin.Business.DependencyResolvers.Ninject;
+using RecycleCoin.Entities.Concrete.EntityFramework;
 
 namespace RecycleCoin.WebUI.Controllers
 {
     public class OperatorController : Controller
     {
         IProductService _productService = InstanceFactory.GetInstance<IProductService>();
+        IUserService _userService = InstanceFactory.GetInstance<IUserService>();
+        IRecycleService _recycleService = InstanceFactory.GetInstance<IRecycleService>();
+        IRecycleDetailService _recycleDetailService = InstanceFactory.GetInstance<IRecycleDetailService>();
+        ICustomerService _customerService = InstanceFactory.GetInstance<ICustomerService>();
 
         public IActionResult Index()
         {
@@ -47,7 +52,7 @@ namespace RecycleCoin.WebUI.Controllers
             }
             else
             {
-                var detail = recycleDetailModels.FirstOrDefault(p=>p.ProductId == detectedObject.ObjectIndex);
+                var detail = recycleDetailModels.FirstOrDefault(p => p.ProductId == detectedObject.ObjectIndex);
                 if (detail != null)
                 {
                     detail.ProductQuantity++;
@@ -88,8 +93,6 @@ namespace RecycleCoin.WebUI.Controllers
 
             return View(model);
         }
-
-
 
         #region Image save webcam
         //private static async Task<DetectedObject> StoreInFolder(IFormFile file, string fileName)
@@ -150,5 +153,50 @@ namespace RecycleCoin.WebUI.Controllers
         //    };
         //}
         #endregion
+
+        [HttpPost]
+        public IActionResult SetRecycleToUser(SetRecycleModel setRecycleModel)
+        {
+            if (setRecycleModel.UserModels == null)
+            {
+                setRecycleModel.UserModels = new List<UserModel>();
+            }
+
+            List<User> users = _userService.GetByRoleId(3);
+            foreach (var user in users)
+            {
+                setRecycleModel.UserModels.Add(new UserModel
+                {
+                    Email = user.Email,
+                    Id = user.Id,
+                    Username = user.Username,
+                });
+            }
+            return View(setRecycleModel);
+        }
+
+        [HttpPost]
+        public IActionResult RecycleConfirmed(int userID, List<RecycleDetailModel> recycleDetailModels)
+        {
+            Customer customer = _customerService.GetByUserId(userID);
+            Recycle recycle = new Recycle
+            {
+                CustomerId = customer.Id,
+                Date = DateTime.Now
+            };
+            _recycleService.AddRecycle(recycle);
+            foreach (var recycleDetailModel in recycleDetailModels)
+            {
+                _recycleDetailService.AddRecycleDetail(new RecycleDetail
+                {
+                    ProductId= recycleDetailModel.ProductId,
+                    ProductQuantity= recycleDetailModel.ProductQuantity,
+                    RecycleId = recycle.Id,
+                    SubTotalPrice= recycleDetailModel.SubTotalPrice
+                });
+                customer.CarbonBalance += recycleDetailModel.SubTotalPrice;
+            }
+            return View();
+        }
     }
 }

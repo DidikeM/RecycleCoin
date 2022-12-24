@@ -15,5 +15,6 @@ namespace RecycleCoin.Business.Abstract
         User GetByEmail(string email);
         User GetById(int id);
         void UpdateRole(int userId, int roleID);
+        List<User> GetByRoleId(int roleId);
     }
 }

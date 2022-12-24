@@ -1,0 +1,113 @@
+﻿@model SetRecycleModel
+@{
+    Layout = "_ManagerLayout";
+}
+
+<head>
+    <!-- Custom CSS -->
+    <link href="~/css/style-set-operator.css" rel="stylesheet" />
+</head>
+
+<div>
+    <table class="table bg-white rounded shadow-sm table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="col">Nesne Adı</th>
+                <th scope="col">Nesne Puanı</th>
+                <th scope="col">Geri dönüşüm sayısı</th>
+                <th scope="col">Nesneden Gelen Toplam puan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form id="myform" asp-controller="Operator" asp-action="RecycleConfirmed" method="post">
+
+                <input id="userId" name="userId" type="hidden" />
+                @if (Model != null)
+                {
+                    @for (int i = 0; i < Model.recycleDetailModels.Count(); i++)
+                    {
+                    <tr>
+                        <td>@Html.HiddenFor(m=>m.recycleDetailModels[i].ProductId)</td>
+                        <td>@Model.recycleDetailModels[i].ProductName @Html.HiddenFor(m=>m.recycleDetailModels[i].ProductName)</td>
+                        <td>@Model.recycleDetailModels[i].ProductPoint @Html.HiddenFor(m=>m.recycleDetailModels[i].ProductPoint)</td>
+                        <td>@Model.recycleDetailModels[i].ProductQuantity @Html.HiddenFor(m=>m.recycleDetailModels[i].ProductQuantity)</td>
+                        <td>@Model.recycleDetailModels[i].SubTotalPrice @Html.HiddenFor(m=>m.recycleDetailModels[i].SubTotalPrice)</td>
+                    </tr>
+                    }
+                }
+            </form>
+        </tbody>
+    </table>
+</div>
+<div class="row my-5">
+    <div class="col">
+        <div class="row-input">
+            <input type="text"
+                   name="search"
+                   id="myInput"
+                   placeholder="Search..."
+                   onkeyup="search()" />
+            <button onclick="submit_form()" class="confirm-button">Confirm</button>
+
+        </div>
+        <table class="table bg-white rounded shadow-sm table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" width="50">ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">E-Mail</th>
+                </tr>
+            </thead>
+            <tbody id="myTBody">
+                @foreach (var user in Model.UserModels)
+                {
+                    <tr onclick="selectUser(this)">
+                        <th id="tableId" scope="row">@user.Id</th>
+                        <td>@user.Username</td>
+                        <td>@user.Email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    function search() {
+        var input, filter, tr;
+        input = document.getElementById("myInput");
+
+        filter = input.value.toUpperCase();
+
+        tbody = document.getElementById("myTBody");
+        tr = tbody.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            let doHas = false;
+            let tds = tr[i].getElementsByTagName("td");
+            for (let t = 0; t < tds.length; t++) {
+                let td = tds[t];
+                let content = td.textContent;
+                if (content.toUpperCase().indexOf(filter) > -1) {
+                    doHas = true;
+                }
+            }
+
+            if (doHas) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+    function selectUser(selRow) {
+        document.getElementById("userId").value = selRow.cells[0].innerHTML;
+    }
+
+    function submit_form() {
+        document.getElementById('myform').submit();
+    }
+</script>

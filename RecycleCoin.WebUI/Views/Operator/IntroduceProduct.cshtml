@@ -126,6 +126,13 @@
         </tbody>
     </table>
 </div>
+@if (Model != null)
+{
+    @if (Model.RecycleDetailModels.Count != 0)
+    {
+        <input type="submit" class="btn button-camera" value="listeyi kullanıcı" onclick="go_to_set_recycle()" />
+    }
+}
 <script src="~/webcamjs/webcam.js"></script>
 
 <script type="text/javascript">
@@ -163,6 +170,10 @@
         document.getElementById('detectedObject_ObjectIndex').value = -1;
     }
     function submit_form() {
+        document.getElementById('myform').submit();
+    }
+    function go_to_set_recycle() {
+        document.getElementById('myform').setAttribute("action", "/Operator/SetRecycleToUser")
         document.getElementById('myform').submit();
     }
 </script>
