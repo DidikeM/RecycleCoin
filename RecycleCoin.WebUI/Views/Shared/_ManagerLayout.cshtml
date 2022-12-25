@@ -28,7 +28,7 @@
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-                <img src="~/images/logo.png" alt="logo" class="logo" />
+                <a asp-controller="Home" asp-action="Index"><img src="~/images/logo.png" alt="logo" class="logo" /></a>
             </div>
             <div class="list-group list-group-flush my-3">
                 @if (role == "1")
@@ -68,7 +68,10 @@
 
                 <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-clock-rotate-left me-2"></i>History</a>
-
+                <a asp-controller="Admin" asp-action="Question"
+                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <i class="fa-sharp fa-solid fa-question me-2"></i>Question-Answer
+                </a>
                 <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-circle-info me-2"></i>System Info</a>
 

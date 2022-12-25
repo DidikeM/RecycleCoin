@@ -1,0 +1,53 @@
+﻿@using RecycleCoin.Entities.Concrete.EntityFramework;
+@model List<Contact>
+
+@{
+    Layout = "_ManagerLayout";
+}
+
+<head>
+    <style>
+        #contact-info {
+            width: 750px !important;
+            padding:15px;
+            margin-left: 100px !important;
+            height: 200px;
+            word-break: break-all;
+            border-radius: 20px !important;
+            background-color: azure;
+        }
+
+    </style>
+</head>
+
+<div class="row my-5">
+    <div class="col-3">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-primary text-muted">
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contact in Model)
+                {
+                    <tr>
+                        <td onclick="selectCell('@contact.Text')">@contact.Email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-9">
+        <div id="contact-info"></div>
+    </div>
+    <input type="hidden" id="temp" value="0" />
+</div>
+<script>
+
+    function selectCell(e) {
+
+        document.getElementById("contact-info").innerHTML = e;
+
+    }
+</script>
