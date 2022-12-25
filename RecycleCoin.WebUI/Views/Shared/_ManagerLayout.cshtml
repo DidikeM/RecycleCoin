@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims;
+@{
+    string role = User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Role)!.Value;
+}
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="utf-8" />
@@ -27,30 +31,47 @@
                 <img src="~/images/logo.png" alt="logo" class="logo" />
             </div>
             <div class="list-group list-group-flush my-3">
+                @if (role == "1")
+                {
+                    <a href="#"
+                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-users me-2"></i>List Users</a>
+                    <a asp-controller="Admin" asp-action="SetOperator"
+                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-reply me-2"></i>Set Operator</a>
+                    <a href="#"
+                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                        <i class="fa-sharp fa-solid fa-question me-2"></i>Question-Answer
+                    </a>
+                }
+                else if (role == "2")
+                {
+                    <a asp-controller="Operator" asp-action="IntroduceProduct"
+                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                        <i class="fa-solid fa-camera-rotate me-2"></i>Introduce Product
+                    </a>
+                }
+                else if (role == "3")
+                {
+                    <a asp-controller="Customer" asp-action="WithDraw"
+                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-money-bill-transfer me-2"></i>WithDraw</a>
+                }
+                else
+                {
+
+                }
                 @* <a href="#"
                 class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>*@
                 <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-solid fa-house me-2"></i>Dashboard</a>
+
                 <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-chart-line me-2"></i>Statistics</a>
-                <a asp-controller="Operator" asp-action="IntroduceProduct"
-                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                    <i class="fa-solid fa-camera-rotate me-2"></i>Introduce Product
-                </a>
-                <a href="#"
-                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-users me-2"></i>List Users</a>
-                <a asp-controller="Customer" asp-action="WithDraw"
-                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-money-bill-transfer me-2"></i>WithDraw</a>
-                <a asp-controller="Admin" asp-action="SetOperator"
-                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-reply me-2"></i>Set Operator</a>
+
                 <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-clock-rotate-left me-2"></i>History</a>
-                <a href="#"
-                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                    <i class="fa-sharp fa-solid fa-question me-2"></i>Question-Answer
-                </a>
+
                 <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-circle-info me-2"></i>System Info</a>
+
                 <a asp-controller="Authentication" asp-action="LogOut"
                    class="list-group-item list-group-item-action bg-transparent text-primary fw-bold"><i class="fas fa-power-off me-2"></i>Logout</a>
             </div>
