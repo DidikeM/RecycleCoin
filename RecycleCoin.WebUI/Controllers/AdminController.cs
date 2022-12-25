@@ -20,6 +20,7 @@ namespace RecycleCoin.WebUI.Controllers
     {
         IUserService _userService = InstanceFactory.GetInstance<IUserService>();
         IRoleService _roleService = InstanceFactory.GetInstance<IRoleService>();
+        IContactService _contactService = InstanceFactory.GetInstance<IContactService>();
 
         private readonly IWebHostEnvironment _environment;
 
@@ -58,6 +59,13 @@ namespace RecycleCoin.WebUI.Controllers
             return View();
         }
 
+        public IActionResult Question()
+        {
+            List<Contact> contacts = _contactService.GetAll();
+
+            return View(contacts);
+        }
+
         private List<UserModel> GetUsers()
         {
             List<UserModel> userModels = new List<UserModel>();
@@ -75,6 +83,8 @@ namespace RecycleCoin.WebUI.Controllers
             }
             return userModels;
         }
+
+
 
     }
 }
