@@ -10,5 +10,6 @@ namespace RecycleCoin.Business.Abstract
     public interface IContactService
     {
         void Add(Contact contact);
+        List<Contact> GetAll();
     }
 }
