@@ -37,7 +37,7 @@
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-users me-2"></i>List Users</a>
                     <a asp-controller="Admin" asp-action="SetOperator"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-reply me-2"></i>Set Operator</a>
-                    <a href="#"
+                    <a asp-controller="Admin" asp-action="Question"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                         <i class="fa-sharp fa-solid fa-question me-2"></i>Question-Answer
                     </a>
@@ -59,7 +59,8 @@
 
                 }
                 @* <a href="#"
-                class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>*@
+                class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+
                 <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-solid fa-house me-2"></i>Dashboard</a>
 
@@ -68,12 +69,9 @@
 
                 <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-clock-rotate-left me-2"></i>History</a>
-                <a asp-controller="Admin" asp-action="Question"
-                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                    <i class="fa-sharp fa-solid fa-question me-2"></i>Question-Answer
-                </a>
+
                 <a href="#"
-                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-circle-info me-2"></i>System Info</a>
+                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-circle-info me-2"></i>System Info</a>*@
 
                 <a asp-controller="Authentication" asp-action="LogOut"
                    class="list-group-item list-group-item-action bg-transparent text-primary fw-bold"><i class="fas fa-power-off me-2"></i>Logout</a>

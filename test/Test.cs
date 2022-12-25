@@ -1,5 +1,5 @@
 ﻿//using RecycleCoin.API.Concrete;
-using coineservice;
+//using coineservice;
 using RecycleCoin.Business.Abstract;
 using RecycleCoin.Business.DependencyResolvers.Ninject;
 using RecycleCoin.Entities.Concrete.EntityFramework;
@@ -55,17 +55,6 @@ namespace test
 
         public Test()
         {
-
-
-
-
-
-
-
-
-
-
-
 
             //var response = ObjectDetectService.ObjectDetect(Image.FromFile("../../../img.jpg"));
 

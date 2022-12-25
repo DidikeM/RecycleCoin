@@ -10,7 +10,7 @@ Test test = new Test();
 
 //var response = await ObjectDetectService.DetectObject(Image.FromFile("../../../img.jpg"));
 
-
+//var x = await CoinTransferService.CoinTransferToAdress("RBWWdhuJeSetUaXvUy267jNo3xY5JDbjdC", 3);
 
 //var imm = new Bitmap(response.DetectedImage!);
 //imm.Save("../../../blablaimg.jpg", ImageFormat.Jpeg);

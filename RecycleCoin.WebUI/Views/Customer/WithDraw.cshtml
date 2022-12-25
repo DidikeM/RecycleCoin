@@ -1,4 +1,5 @@
-﻿@{
+﻿@model WithDrawModel
+@{
     Layout = "_ManagerLayout";
 }
 
@@ -29,31 +30,48 @@
             }
     </style>
 </head>
-
+@*1 Rc = 100 000 000*@
 <table class="table table-borderless">
     <tbody>
-        <form method="post">
+        <form id="myform" asp-controller="Customer" asp-action="WithDraw" method="post">
         <tr>
             <th>Total Carbon Point:</th>
-            <td><label for="TotalCarbonPoint" class="form-label">...</label></td>
+            <td><label for="TotalCarbonPoint" class="form-label">@Model.CustomerModel!.Carbon</label></td>
 
         </tr>
+
         <tr>
             <th>Amount Desired:</th>
-            <td><input type="text" class="form-control" id="amountDesired" placeholder="Amount Desired"></td>
 
+
+            <input name="userId" type="hidden" value="@Model.CustomerModel.UserModel!.Id" />
+            <td><input name="carbon" type="number" class="form-control" id="amountDesired" min="1000" max="@Model.CustomerModel.Carbon" placeholder="Amount Desired"></td>
         </tr>
         <tr>
             <th>SHA 256 Address:</th>
-            <td><input type="text" class="form-control" id="sha256Address" placeholder="Your SHA-256 Address"></td>
+            <td><input name="walletAddress" type="text" class="form-control" id="sha256Address" placeholder="Your SHA-256 Address" value="@Model.CustomerModel.WalletAddress"></td>
         </tr>
         <tr>
-            <td colspan="2">The amount of Carbon Points you want to withdraw is equal to the amount of ... Recycle Coins</td>
+            <td colspan="2">The amount of Carbon Points you want to withdraw is equal to the amount of <span id="coin">...</span> Recycle Coins</td>
         </tr>
         <tr>
-            <td colspan="2"><button type="submit" class="btn-grad">Confirm</button></td>
+            <td colspan="2"><button onclick="submit_form()" class="btn-grad">Confirm</button></td>
         </tr>
+
         </form>
     </tbody>
 </table>
+<h1 class="text-danger">@Model.Result</h1>
+<script>
+    document.getElementById("amountDesired").addEventListener("keypress", (e) => {
+        if (e.key == '.' || e.key == ',' || e.key == '-') {
+            e.preventDefault()
+        }
 
+    })
+
+    document.getElementById("amountDesired").addEventListener("keyup", (e) => {
+        document.getElementById("coin").innerHTML = (document.getElementById("amountDesired").value / 100000000).toLocaleString('fullwide', { useGrouping: false, maximumFractionDigits: 20 });
+        console.log(e);
+    })
+</script>
