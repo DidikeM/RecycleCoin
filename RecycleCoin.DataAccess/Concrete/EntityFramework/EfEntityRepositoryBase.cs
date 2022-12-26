@@ -20,7 +20,7 @@ namespace RecycleCoin.DataAccess.Concrete.EntityFramework
             }
         }
 
-        public int GetCount(Expression<Func<T, bool>> filter)
+        public int GetCount(Expression<Func<T, bool>> filter = null!)
         {
             using (TContext context = new TContext())
             {
@@ -33,6 +33,14 @@ namespace RecycleCoin.DataAccess.Concrete.EntityFramework
             using (TContext context = new TContext())
             {
                 return filter == null ? context.Set<T>().ToList() : context.Set<T>().Where(filter).ToList();
+            }
+        }
+
+        public int SumInt(Expression<Func<T, int>> column, Expression<Func<T, bool>> filter = null!)
+        {
+            using (TContext context = new TContext())
+            {
+                return filter == null ? context.Set<T>().Sum(column) : context.Set<T>().Where(filter).Sum(column);
             }
         }
 
@@ -65,5 +73,6 @@ namespace RecycleCoin.DataAccess.Concrete.EntityFramework
                 context.SaveChanges();
             }
         }
+
     }
 }

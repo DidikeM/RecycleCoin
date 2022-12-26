@@ -12,6 +12,9 @@ namespace RecycleCoin.WebUI.Controllers
     {
         IUserService _userService = InstanceFactory.GetInstance<IUserService>();
         ICustomerService _customerService = InstanceFactory.GetInstance<ICustomerService>();
+        IRecycleService _recycleService = InstanceFactory.GetInstance<IRecycleService>();
+        IRecycleDetailService _recycleDetailService = InstanceFactory.GetInstance<IRecycleDetailService>();
+        IProductService _productService = InstanceFactory.GetInstance<IProductService>();
         public IActionResult Index()
         {
             return View();
@@ -22,6 +25,43 @@ namespace RecycleCoin.WebUI.Controllers
 
             return View(new WithDrawModel { CustomerModel = GetCustomer() });
         }
+
+
+        public IActionResult RecycleHistory()
+        {
+            List<Recycle> recycles = _recycleService.GetByCustomerId(_customerService.GetByUserId(Convert.ToInt32(User.Claims.FirstOrDefault(p => p.Type == "id")!.Value)).Id);
+            List<RecycleModel> recycleModels = new List<RecycleModel>();
+
+            List<Product> products = _productService.GetAll();
+
+            foreach (var recycle in recycles)
+            {
+                RecycleModel recycleModel = new RecycleModel
+                {
+                    Id = recycle.Id,
+                    Date = recycle.Date,
+                    recycleDetailModels = new List<RecycleDetailModel>(),
+                    TotalCarbon = 0
+                };
+
+                List<RecycleDetail> recycleDetails = _recycleDetailService.GetByRecycleId(recycle.Id);
+                foreach (var recycleDetail in recycleDetails)
+                {
+                    var product = products.FirstOrDefault(p => p.Id == recycleDetail.ProductId);
+                    recycleModel.recycleDetailModels.Add(new RecycleDetailModel
+                    {
+                        ProductName = product!.Name,
+                        ProductPoint = product.Price,
+                        ProductQuantity = recycleDetail.ProductQuantity,
+                        SubTotalPrice = recycleDetail.SubTotalPrice
+                    });
+                    recycleModel.TotalCarbon += recycleDetail.SubTotalPrice;
+                }
+                recycleModels.Add(recycleModel);
+            }
+            return View(recycleModels);
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> WithDraw(int userId, int carbon, string walletAddress)

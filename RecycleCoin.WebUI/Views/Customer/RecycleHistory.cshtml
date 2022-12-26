@@ -1,0 +1,72 @@
+﻿@model List<RecycleModel>
+@{
+    Layout = "_ManagerLayout";
+}
+
+@{
+    ViewData["Title"] = "Recycle History";
+}
+
+<div class="accordion" id="recycle-accordion">
+    @foreach (var recycleModel in Model)
+    {
+        <div class="accordion-item">
+            @*<div class="card-header">*@
+            <h2 class="accordion-header mb-0" id="heading@(recycleModel.Id)">
+                <button class="accordion-button btn btn-link collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapse@(recycleModel.Id)"
+                    aria-expanded="false"
+                    aria-controls="collapse@(recycleModel.Id)">
+                    @*data-toggle="collapse"
+                data-target="#category-@recycleModel.Id"*@
+
+                    <table class="table table-borderless">
+                        <tbody>
+
+                            <tr>
+                                <th>Recycle Date:</th>
+                                <td>@recycleModel.Date</td>
+
+                                <th>Total Carbon:</th>
+                                <td>@recycleModel.TotalCarbon</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </button>
+            </h2>
+        </div>
+        <div id="collapse@(recycleModel.Id)"
+         class="accordion-collapse collapse "
+         aria-labelledby="heading@(recycleModel.Id)"
+         data-bs-parent="#recycle-accordion"
+         @*data-parent="#recycle-accordion"*@>
+            <div class="accordion-body">
+                @foreach (var recycleDetailModel in recycleModel.recycleDetailModels!)
+                {
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th>Object Name:</th>
+                                <td>@recycleDetailModel.ProductName</td>
+
+                                <th>Object Point:</th>
+                                <td>@recycleDetailModel.ProductPoint</td>
+
+                                <th>Object Quantity:</th>
+                                <td>@recycleDetailModel.ProductQuantity</td>
+
+                                <th>SubTotalPrice:</th>
+                                <td>@recycleDetailModel.SubTotalPrice</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+        @*</div>*@
+    }
+</div>
+

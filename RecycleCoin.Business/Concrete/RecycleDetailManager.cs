@@ -22,5 +22,20 @@ namespace RecycleCoin.Business.Concrete
         {
             _recycleDetailDal.Add(recycleDetail);
         }
+
+        public List<RecycleDetail> GetByRecycleId(int recycleId)
+        {
+            return _recycleDetailDal.GetAll(p => p.RecycleId == recycleId);
+        }
+
+        public int SumOfCarbon()
+        {
+            return _recycleDetailDal.SumInt(p => p.SubTotalPrice);
+        }
+
+        public int SumOfProductQuantityToProductId(int productId)
+        {
+            return _recycleDetailDal.SumInt(p=>p.ProductQuantity, q=>q.ProductId == productId);
+        }
     }
 }

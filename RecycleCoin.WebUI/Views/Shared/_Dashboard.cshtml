@@ -1,0 +1,50 @@
+﻿@using RecycleCoin.Business.Abstract;
+@using RecycleCoin.Business.DependencyResolvers.Ninject;
+@{
+    Layout = "_ManagerLayout";
+    ViewData["Title"] = "Dashboard";
+    IRecycleDetailService _recycleDetailService = InstanceFactory.GetInstance<IRecycleDetailService>();
+}
+
+<div class="row g-3 my-2">
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@_recycleDetailService.SumOfProductQuantityToProductId(1)</h3>
+                <p class="fs-5">Plastic Bottle</p>
+            </div>
+            <i class="fa-solid fa-bottle-water fs-1 primary-text p-3"></i>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@_recycleDetailService.SumOfProductQuantityToProductId(2)</h3>
+                <p class="fs-5">Can Coke</p>
+            </div>
+            <i class="fa-solid fa-prescription-bottle fs-1 primary-text p-3"></i>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@_recycleDetailService.SumOfProductQuantityToProductId(3)</h3>
+                <p class="fs-5">Battery</p>
+            </div>
+            <i class="fa-solid fa-battery-full fs-1 primary-text p-3"></i>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div>
+                <h3 class="fs-2">@_recycleDetailService.SumOfCarbon()</h3>
+                <p class="fs-5">Carbon Point</p>
+            </div>
+            <i class="fa-solid fa-coins fs-1 primary-text p-3"></i>
+        </div>
+    </div>
+</div>
+@RenderBody()

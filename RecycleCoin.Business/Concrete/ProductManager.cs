@@ -23,6 +23,11 @@ namespace RecycleCoin.Business.Concrete
             _productDal.Add(product);
         }
 
+        public List<Product> GetAll()
+        {
+            return _productDal.GetAll();
+        }
+
         public Product GetById(int objectIndex)
         {
             return _productDal.Get(p => p.Id == objectIndex);

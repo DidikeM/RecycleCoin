@@ -13,7 +13,8 @@ namespace RecycleCoin.DataAccess.Abstract
     {
         List<T> GetAll(Expression<Func<T, bool>> filter = null!);
         T Get(Expression<Func<T, bool>> filter);
-        int GetCount(Expression<Func<T, bool>> filter);
+        int GetCount(Expression<Func<T, bool>> filter = null!);
+        int SumInt(Expression<Func<T, int>> column, Expression<Func<T, bool>> filter = null!);
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);

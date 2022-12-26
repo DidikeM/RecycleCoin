@@ -1,13 +1,23 @@
 ﻿@using System.Security.Claims;
+@using RecycleCoin.Business.Abstract;
+@using RecycleCoin.Business.DependencyResolvers.Ninject;
 @{
-    string role = User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Role)!.Value;
+    IRoleService _roleService = InstanceFactory.GetInstance<IRoleService>();
+    string role = "Customer";
+    string roleId = "1";
+    if (User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Role) != null)
+    {
+        roleId = User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Role)!.Value;
+        role = _roleService.GetById(Convert.ToInt32(roleId)).Name;
+    }
 }
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Recycle Coin</title>
+    <title>Recycle Coin - @ViewData["Title"]</title>
     <link rel="shortcut icon"
           href="~/images/favicon-32x32.png"
           type="image/x-icon" />
@@ -31,7 +41,9 @@
                 <a asp-controller="Home" asp-action="Index"><img src="~/images/logo.png" alt="logo" class="logo" /></a>
             </div>
             <div class="list-group list-group-flush my-3">
-                @if (role == "1")
+                <a asp-controller="@role" asp-action="Index"
+                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-solid fa-house me-2"></i>Dashboard</a>
+                @if (roleId == "1")
                 {
                     <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-users me-2"></i>List Users</a>
@@ -42,17 +54,21 @@
                         <i class="fa-sharp fa-solid fa-question me-2"></i>Question-Answer
                     </a>
                 }
-                else if (role == "2")
+                else if (roleId == "2")
                 {
                     <a asp-controller="Operator" asp-action="IntroduceProduct"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                         <i class="fa-solid fa-camera-rotate me-2"></i>Introduce Product
                     </a>
                 }
-                else if (role == "3")
+                else if (roleId == "3")
                 {
+
+                    
                     <a asp-controller="Customer" asp-action="WithDraw"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-money-bill-transfer me-2"></i>WithDraw</a>
+                    <a asp-controller="Customer" asp-action="RecycleHistory"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-money-bill-transfer me-2"></i>RecycleHistory</a>
                 }
                 else
                 {
@@ -60,9 +76,6 @@
                 }
                 @* <a href="#"
                 class="list-group-item list-group-item-action bg-transparent second-text active"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-
-                <a href="#"
-                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-solid fa-house me-2"></i>Dashboard</a>
 
                 <a href="#"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-chart-line me-2"></i>Statistics</a>
@@ -85,7 +98,7 @@
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3"
                        id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Dashboard</h2>
+                    <h2 class="fs-2 m-0">@ViewData["Title"]</h2>
                 </div>
 
                 <button class="navbar-toggler"

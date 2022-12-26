@@ -10,5 +10,8 @@ namespace RecycleCoin.Business.Abstract
     public interface IRecycleDetailService
     {
         void AddRecycleDetail(RecycleDetail recycleDetail);
+        List<RecycleDetail> GetByRecycleId(int recycleId);
+        int SumOfProductQuantityToProductId(int productId);
+        int SumOfCarbon();
     }
 }
