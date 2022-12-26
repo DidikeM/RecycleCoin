@@ -13,5 +13,6 @@ namespace RecycleCoin.Business.Abstract
         List<RecycleDetail> GetByRecycleId(int recycleId);
         int SumOfProductQuantityToProductId(int productId);
         int SumOfCarbon();
+        int SumOfCarbonToCustomerId(int customerId);
     }
 }

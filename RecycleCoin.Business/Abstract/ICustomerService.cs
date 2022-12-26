@@ -12,5 +12,6 @@ namespace RecycleCoin.Business.Abstract
         void AddCustomer(Customer customer);
         Customer GetByUserId(int userID);
         void Update(Customer customer);
+        List<Customer> GetAll();
     }
 }

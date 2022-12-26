@@ -33,6 +33,11 @@ namespace RecycleCoin.Business.Concrete
             return _recycleDetailDal.SumInt(p => p.SubTotalPrice);
         }
 
+        public int SumOfCarbonToCustomerId(int customerId)
+        {
+            return _recycleDetailDal.SumInt(p=>p.SubTotalPrice, q=>q.Recycle.CustomerId == customerId);
+        }
+
         public int SumOfProductQuantityToProductId(int productId)
         {
             return _recycleDetailDal.SumInt(p=>p.ProductQuantity, q=>q.ProductId == productId);

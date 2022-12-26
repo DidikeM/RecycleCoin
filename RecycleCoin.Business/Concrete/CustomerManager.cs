@@ -23,6 +23,11 @@ namespace RecycleCoin.Business.Concrete
             _customerDal.Add(customer);
         }
 
+        public List<Customer> GetAll()
+        {
+            return _customerDal.GetAll();
+        }
+
         public Customer GetByUserId(int userID)
         {
             return _customerDal.Get(p => p.UserId == userID);
