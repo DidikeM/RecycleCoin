@@ -1,5 +1,15 @@
 ﻿@using System.Security.Claims;
-
+@using RecycleCoin.Business.Abstract;
+@using RecycleCoin.Business.DependencyResolvers.Ninject;
+@{
+    IRoleService _roleService = InstanceFactory.GetInstance<IRoleService>();
+    string role = "Customer";
+    if (User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Role) != null)
+    {
+        string id = User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Role)!.Value;
+        role = _roleService.GetById(Convert.ToInt32(id)).Name;
+    }
+}
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -49,7 +59,7 @@
                 <ul class="navbar-nav ms-auto">
                     @if (User.Identity!.IsAuthenticated)
                     {
-                        <li class="d-lg-none"><a class="nav-link" href="#">Profile</a><span></span></li>
+                        <li class="d-lg-none"><a asp-controller="@role" asp-action="Index" class="nav-link">Profile</a><span></span></li>
                     }
                     <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a><span></span></li>
                     <li><a class="nav-link" asp-area="" asp-controller="Forum" asp-action="Index">Forum</a><span></span></li>
@@ -66,10 +76,10 @@
                            role="button"
                            data-bs-toggle="dropdown"
                            aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>@User.Claims.FirstOrDefault(p=>p.Type == ClaimTypes.Name)!.Value
+                                <i class="fas fa-user me-2"></i>@User.Claims!.FirstOrDefault(p=>p.Type == ClaimTypes.Name)!.Value
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a asp-controller="Admin" asp-action="Index" class="dropdown-item">Profile</a></li>
+                                <li><a asp-controller="@role" asp-action="Index" class="dropdown-item">Profile</a></li>
                                 <!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
                                 <li><a asp-controller="Authentication" asp-action="LogOut" class="dropdown-item"><span>Sıgn Out</span> </a><span></span></li>
                             </ul>

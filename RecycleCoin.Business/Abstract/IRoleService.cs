@@ -11,5 +11,6 @@ namespace RecycleCoin.Business.Abstract
     {
         void AddRole(Role role);
         List<Role> GetAll();
+        Role GetById(int id);
     }
 }

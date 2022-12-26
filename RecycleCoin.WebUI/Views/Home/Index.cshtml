@@ -1,4 +1,16 @@
-﻿
+﻿@using System.Security.Claims;
+@using RecycleCoin.Business.Abstract;
+@using RecycleCoin.Business.DependencyResolvers.Ninject;
+@{
+    string role = "";
+    IRoleService _roleService = InstanceFactory.GetInstance<IRoleService>();
+    if (User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Role) != null)
+    {
+        string id = User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Role)!.Value;
+        role = _roleService.GetById(Convert.ToInt32(id)).Name;
+    }
+}
+
 <head>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/style-index.css" />
@@ -21,7 +33,14 @@
                     <span class="gradient-text">RECYCLE COIN</span>
                 </div>
                 <div class="buttons">
-                    <a asp-area="" asp-controller="Authentication" asp-action="Register" class="btn btn-grad">Get Started</a>
+                    @if (role.Equals(""))
+                    {
+                        <a asp-controller="Authentication" asp-action="Register" class="btn btn-grad">Get Started</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="@role" asp-action="Index" class="btn btn-grad">Get Started</a>
+                    }
                 </div>
             </div>
             <!-- Image -->

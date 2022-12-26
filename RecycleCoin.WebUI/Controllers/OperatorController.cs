@@ -8,9 +8,11 @@ using RecycleCoin.WebUI.Models;
 using RecycleCoin.Business.Abstract;
 using RecycleCoin.Business.DependencyResolvers.Ninject;
 using RecycleCoin.Entities.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RecycleCoin.WebUI.Controllers
 {
+    [Authorize(policy: "OperatorClaimPolicy")] 
     public class OperatorController : Controller
     {
         IProductService _productService = InstanceFactory.GetInstance<IProductService>();

@@ -8,7 +8,7 @@ var fs = require("fs");
 function coinTransferFunction(args) {
   const { exec, execSync } = require("child_process");
   var cmdString =
-    "recylecoind sendtoaddress " + args.address + " " + args.coinAmount;
+      "recylecoind sendtoaddress " + args.address + " " + (args.coinAmount / 100000000);
   try {
     var result = execSync(cmdString);
 

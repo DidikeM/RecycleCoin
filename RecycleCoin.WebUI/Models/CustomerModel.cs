@@ -4,5 +4,6 @@
     {
         public UserModel? UserModel { get; set; }
         public int Carbon { get; set; }
+        public string? WalletAddress { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RecycleCoin.Business.Concrete
 {
-    public class RoleManager:IRoleService
+    public class RoleManager : IRoleService
     {
         IRoleDal _roleDal;
 
@@ -26,6 +26,11 @@ namespace RecycleCoin.Business.Concrete
         public List<Role> GetAll()
         {
             return _roleDal.GetAll();
+        }
+
+        public Role GetById(int id)
+        {
+            return _roleDal.Get(p=>p.Id == id);
         }
     }
 }

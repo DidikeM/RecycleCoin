@@ -26,4 +26,8 @@
     <Protobuf Include="Protos\objectDetectionService.proto" GrpcServices="Client" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+  </ItemGroup>
+
 </Project>
