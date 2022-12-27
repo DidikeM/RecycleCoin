@@ -31,12 +31,13 @@ namespace RecycleCoin.Test
         public void Register()
         {
             driver.Navigate().GoToUrl("http://localhost:5007");
-
+            Random random = new Random();
+            int randint = random.Next(1, 10000);
             driver.FindElement(By.XPath("/html/body/section[1]/div/div/div[1]/div[2]/a")).Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-            driver.FindElement(By.XPath("/html/body/section/div/div/div/div/div/form/div/div[1]/input")).SendKeys("emir_baran");
+            driver.FindElement(By.XPath("/html/body/section/div/div/div/div/div/form/div/div[1]/input")).SendKeys("emir_baran"+ randint.ToString());
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-            driver.FindElement(By.XPath("/html/body/section/div/div/div/div/div/form/div/div[2]/input")).SendKeys("emir_baran@hotmail.com");
+            driver.FindElement(By.XPath("/html/body/section/div/div/div/div/div/form/div/div[2]/input")).SendKeys("emir_baran" + randint.ToString() + "@hotmail.com");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             driver.FindElement(By.XPath("/html/body/section/div/div/div/div/div/form/div/div[3]/input")).SendKeys("emir2001");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);

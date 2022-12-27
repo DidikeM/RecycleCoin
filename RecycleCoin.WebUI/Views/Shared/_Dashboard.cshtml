@@ -13,11 +13,11 @@
     {
         list.Add(new(_userService.GetById(customer.UserId).Username, _recycleDetailService.SumOfCarbonToCustomerId(customer.Id)));
     }
-    //list.Sort((e1, e2) =>
-    //    {
-    //        return e2.Item2.CompareTo(e1.Item2);
-    //    });
-    list.OrderByDescending(p => p.Item2);
+    list.Sort((e1, e2) =>
+        {
+            return e2.Item2.CompareTo(e1.Item2);
+        });
+    //list.OrderByDescending(p => p.Item2);
     list.Take(5);
 }
 

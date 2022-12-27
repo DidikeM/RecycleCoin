@@ -1,0 +1,1 @@
+cmd.exe /c "node scripts/sync.js index update"
