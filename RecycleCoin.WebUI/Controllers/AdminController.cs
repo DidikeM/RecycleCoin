@@ -66,6 +66,13 @@ namespace RecycleCoin.WebUI.Controllers
             return View(contacts);
         }
 
+        public IActionResult ListUser()
+        {
+            List<User> users = _userService.GetAll();
+
+            return View(users);
+        }
+
         private List<UserModel> GetUsers()
         {
             List<UserModel> userModels = new List<UserModel>();

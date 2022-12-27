@@ -45,7 +45,7 @@
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fas fa-solid fa-house me-2"></i>Dashboard</a>
                 @if (roleId == "1")
                 {
-                    <a href="#"
+                    <a asp-controller="Admin" asp-action="ListUser"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-users me-2"></i>List Users</a>
                     <a asp-controller="Admin" asp-action="SetOperator"
                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa-solid fa-reply me-2"></i>Set Operator</a>
@@ -120,7 +120,7 @@
                                role="button"
                                data-bs-toggle="dropdown"
                                aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>admin
+                                <i class="fas fa-user me-2"></i>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" asp-controller="Admin" asp-action="UserSettings">Settings</a></li>

@@ -64,7 +64,11 @@
         </form>
     </tbody>
 </table>
+@*<div class="alert alert-primary" id="myform" role="alert">
+    @Model.Result
+</div>*@
 <h1 class="text-danger">@Model.Result</h1>
+<script src="~/js/set-recycle-to-user.js"></script>
 <script>
     document.getElementById("amountDesired").addEventListener("keypress", (e) => {
         if (e.key == '.' || e.key == ',' || e.key == '-') {

@@ -6,14 +6,20 @@
 @{
     ViewData["Title"] = "Recycle History";
 }
-
+<head>
+    <style>
+        .accordion-body table tbody tr td {
+            width: 100px;
+        }
+    </style>
+</head>
 <div class="accordion" id="recycle-accordion">
     @foreach (var recycleModel in Model)
     {
         <div class="accordion-item">
             @*<div class="card-header">*@
             <h2 class="accordion-header mb-0" id="heading@(recycleModel.Id)">
-                <button class="accordion-button btn btn-link collapsed"
+                <button class="accordion-button btn  collapsed"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapse@(recycleModel.Id)"
@@ -24,7 +30,6 @@
 
                     <table class="table table-borderless">
                         <tbody>
-
                             <tr>
                                 <th>Recycle Date:</th>
                                 <td>@recycleModel.Date</td>
@@ -48,16 +53,16 @@
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
-                                <th>Object Name:</th>
+                                <th style="text-align:right;">Object Name:</th>
                                 <td>@recycleDetailModel.ProductName</td>
 
-                                <th>Object Point:</th>
+                                <th style="text-align:right;">Object Point:</th>
                                 <td>@recycleDetailModel.ProductPoint</td>
 
-                                <th>Object Quantity:</th>
+                                <th style="text-align:right;">Object Quantity:</th>
                                 <td>@recycleDetailModel.ProductQuantity</td>
 
-                                <th>SubTotalPrice:</th>
+                                <th style="text-align:right;">SubTotalPrice:</th>
                                 <td>@recycleDetailModel.SubTotalPrice</td>
 
                             </tr>

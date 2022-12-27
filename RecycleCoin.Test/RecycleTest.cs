@@ -6,7 +6,7 @@ namespace RecycleCoin.Test
     public class RecycleTest
     {
         IWebDriver driver = new ChromeDriver(@"../../../chromedriver.exe");
-
+        
         [Fact]
         public void OpenWebsite()
         {
@@ -67,6 +67,29 @@ namespace RecycleCoin.Test
             driver.FindElement(By.XPath("/html/body/section/div/div/div/div/div/div/form/div[1]/div[2]/div/p")).SendKeys("Recycling is the process of collecting and processing materials that would otherwise be thrown away as trash and turning them into new products. Recycling can benefit your community and the environment.");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             driver.FindElement(By.XPath("/html/body/section/div/div/div/div/div/div/form/div[2]/button")).Click();
+            driver.Quit();
+        }
+
+        [Fact]
+        public void MenuTest()
+        {
+            driver.Navigate().GoToUrl("http://localhost:5007");
+
+            driver.FindElement(By.XPath("/html/body/nav/div/div[2]/ul/a/span")).Click();
+
+            driver.FindElement(By.XPath("/html/body/section/div/div/div/div/div/form/div/div[1]/input")).SendKeys("hms45267@gmail.com");
+            driver.FindElement(By.XPath("/html/body/section/div/div/div/div/div/form/div/div[2]/input")).SendKeys("password");
+            driver.FindElement(By.XPath("/html/body/section/div/div/div/div/div/form/div/button")).Click();
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+            driver.FindElement(By.XPath("/html/body/nav/div/div[2]/ul/li[5]/a")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+            driver.FindElement(By.XPath("//*[@id=\"navbarNavAltMarkup\"]/ul/li[5]/ul/li[1]/a")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+            driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/a[3]")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+            driver.FindElement(By.XPath("/html/body/div/div[1]/div[2]/a[4]")).Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             driver.Quit();
         }
 

@@ -1,0 +1,35 @@
+﻿@using RecycleCoin.Entities.Concrete.EntityFramework;
+@model List<User>
+@{
+    Layout = "_ManagerLayout";
+}
+
+@{
+    ViewData["Title"] = "List User";
+}
+
+<div class="row my-5">
+    <div class="col">
+        <table class="table bg-white rounded shadow-sm table-hover">
+            <thead>
+                <tr class ="table-primary text-muted">
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>E-Mail</th>
+                    <th>Role ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Username</td>
+                        <td>@user.Email</td>
+                        <td>@user.RoleId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
