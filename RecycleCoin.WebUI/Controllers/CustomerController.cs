@@ -29,7 +29,8 @@ namespace RecycleCoin.WebUI.Controllers
 
         public IActionResult RecycleHistory()
         {
-            List<Recycle> recycles = _recycleService.GetByCustomerId(_customerService.GetByUserId(Convert.ToInt32(User.Claims.FirstOrDefault(p => p.Type == "id")!.Value)).Id);
+            int id = Convert.ToInt32(User.Claims.FirstOrDefault(p => p.Type == "id")!.Value);
+            List<Recycle> recycles = _recycleService.GetByUserId(id);
             List<RecycleModel> recycleModels = new List<RecycleModel>();
 
             List<Product> products = _productService.GetAll();

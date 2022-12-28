@@ -36,6 +36,14 @@ namespace RecycleCoin.DataAccess.Concrete.EntityFramework
             }
         }
 
+        public List<Tuple<E>> GetALLSelect<E>(Expression<Func<T, Tuple<E>>> selectfilter, Expression<Func<T, bool>> filter = null!)
+        {
+            using (TContext context = new TContext())
+            {
+                return filter == null ? context.Set<T>().Select(selectfilter).ToList() : context.Set<T>().Where(filter).Select(selectfilter).ToList();
+            }
+        }
+
         public int SumInt(Expression<Func<T, int>> column, Expression<Func<T, bool>> filter = null!)
         {
             using (TContext context = new TContext())
@@ -73,6 +81,5 @@ namespace RecycleCoin.DataAccess.Concrete.EntityFramework
                 context.SaveChanges();
             }
         }
-
     }
 }

@@ -13,6 +13,7 @@ namespace RecycleCoin.DataAccess.Abstract
     {
         List<T> GetAll(Expression<Func<T, bool>> filter = null!);
         T Get(Expression<Func<T, bool>> filter);
+        public List<Tuple<E>> GetALLSelect<E>(Expression<Func<T, Tuple<E>>> selectfilter, Expression<Func<T, bool>> filter = null!);
         int GetCount(Expression<Func<T, bool>> filter = null!);
         int SumInt(Expression<Func<T, int>> column, Expression<Func<T, bool>> filter = null!);
         void Add(T entity);

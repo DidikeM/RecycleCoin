@@ -12,9 +12,12 @@ namespace RecycleCoin.Business.Concrete
     public class UserManager : IUserService
     {
         IUserDal _UserDal;
-        public UserManager(IUserDal userDal)
+        IViewLeaderboardDal _viewLeaderboardDal;
+
+        public UserManager(IUserDal userDal, IViewLeaderboardDal viewLeaderboardDal)
         {
             _UserDal = userDal;
+            _viewLeaderboardDal = viewLeaderboardDal;
         }
 
         public void AddUser(User user)
@@ -52,6 +55,11 @@ namespace RecycleCoin.Business.Concrete
         public List<User> GetByRoleId(int roleId)
         {
             return _UserDal.GetAll(p=>p.RoleId == roleId);
+        }
+
+        public List<ViewLeaderboard> GetLeaderboard()
+        {
+            return _viewLeaderboardDal.GetAll();
         }
     }
 }

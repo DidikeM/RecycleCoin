@@ -41,6 +41,9 @@ namespace RecycleCoin.Business.DependencyResolvers.Ninject
 
             Bind<IUserService>().To<UserManager>().InSingletonScope();
             Bind<IUserDal>().To<EfUserDal>().InSingletonScope();
+
+            Bind<IViewLeaderboardDal>().To<EfViewLeaderboardDal>().InSingletonScope();
+
         }
     }
 }

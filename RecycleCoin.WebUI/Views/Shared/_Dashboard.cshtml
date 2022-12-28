@@ -1,5 +1,6 @@
 ﻿@using RecycleCoin.Business.Abstract;
 @using RecycleCoin.Business.DependencyResolvers.Ninject;
+@using RecycleCoin.Entities.Concrete.EntityFramework;
 @{
     Layout = "_ManagerLayout";
     ViewData["Title"] = "Dashboard";
@@ -8,17 +9,18 @@
     IUserService _userService = InstanceFactory.GetInstance<IUserService>();
 
     var customers = _customerService.GetAll();
-    var list = new List<(string, int)>();
-    foreach (var customer in customers)
-    {
-        list.Add(new(_userService.GetById(customer.UserId).Username, _recycleDetailService.SumOfCarbonToCustomerId(customer.Id)));
-    }
-    list.Sort((e1, e2) =>
-        {
-            return e2.Item2.CompareTo(e1.Item2);
-        });
-    //list.OrderByDescending(p => p.Item2);
-    list.Take(5);
+    //var list = new List<(string, int)>();
+    //foreach (var customer in customers)
+    //{
+    //    list.Add(new(_userService.GetById(customer.UserId).Username, _recycleDetailService.SumOfCarbonToCustomerId(customer.Id)));
+    //}
+    //list.Sort((e1, e2) =>
+    //    {
+    //        return e2.Item2.CompareTo(e1.Item2);
+    //    });
+    ////list.OrderByDescending(p => p.Item2);
+    //list.Take(5);
+    var list = _userService.GetLeaderboard();
 }
 
 <!-- leaderboard
@@ -373,8 +375,8 @@
             @foreach (var item in list)
             {
                 <tr>
-                    <td>@item.Item1</td>
-                    <td>@item.Item2</td>
+                    <td>@item.Username</td>
+                    <td>@item.Total</td>
                 </tr>
             }
         </tbody>

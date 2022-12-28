@@ -23,9 +23,14 @@ namespace RecycleCoin.Business.Concrete
             _recycleDal.Add(recycle);
         }
 
-        public List<Recycle> GetByCustomerId(int userId)
+        public List<Recycle> GetByCustomerId(int customerId)
         {
-            return _recycleDal.GetAll(p => p.CustomerId == userId);
+            return _recycleDal.GetAll(p => p.CustomerId == customerId);
+        }
+
+        public List<Recycle> GetByUserId(int userId)
+        {
+            return _recycleDal.GetAll(p => p.Customer.UserId == userId);
         }
     }
 }

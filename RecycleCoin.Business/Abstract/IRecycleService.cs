@@ -10,6 +10,7 @@ namespace RecycleCoin.Business.Abstract
     public interface IRecycleService
     {
         void AddRecycle(Recycle recycle);
-        List<Recycle> GetByCustomerId(int userId);
+        List<Recycle> GetByCustomerId(int customerId);
+        List<Recycle> GetByUserId(int userId); 
     }
 }
