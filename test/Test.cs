@@ -1,20 +1,8 @@
-﻿//using RecycleCoin.API.Concrete;
-//using coineservice;
-using RecycleCoin.Business.Abstract;
+﻿using RecycleCoin.Business.Abstract;
 using RecycleCoin.Business.DependencyResolvers.Ninject;
-using RecycleCoin.Entities.Concrete.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
-using Grpc.Net.Client;
-using System.IO;
 using System.Drawing;
-using Google.Protobuf;
 using RecycleCoin.API.Concrete;
-using System.Drawing.Imaging;
+
 
 namespace test
 {
@@ -23,7 +11,6 @@ namespace test
         IUserService userService = InstanceFactory.GetInstance<IUserService>();
         IRoleService roleService = InstanceFactory.GetInstance<IRoleService>();
         ITopicService topicSevice = InstanceFactory.GetInstance<ITopicService>();
-        IReplyService replyService = InstanceFactory.GetInstance<IReplyService>();
         IProductService productService= InstanceFactory.GetInstance<IProductService>();
 
         //public static async Task<Detection?> ObjectDetect(Image image)
@@ -56,16 +43,13 @@ namespace test
         public Test()
         {
 
-            //var response = ObjectDetectService.ObjectDetect(Image.FromFile("../../../img.jpg"));
-
-            //var asd = new ObjectDetectService();
-
-            //var c = asd.ObjectDetect(Image.FromFile("../../../img.jpg"));
-            //c.Wait();
-
+            
 
             #region resim bilmemn
-
+            //var response = ObjectDetectService.ObjectDetect(Image.FromFile("../../../img.jpg"));
+            //var asd = new ObjectDetectService();
+            //var c = asd.ObjectDetect(Image.FromFile("../../../img.jpg"));
+            //c.Wait();
             //var a = new Bitmap(Image.FromFile("../../../img.jpg"));
             //ByteString imgbyte = RecycleCoin.API.Concrete.ObjectDetectService.ImageToByteString(a);
 
@@ -80,9 +64,6 @@ namespace test
             //var imm = new Bitmap(image);
             //imm.Save("../../../blablaimg.jpg", ImageFormat.Jpeg);
 
-            #endregion
-
-
             //Image image = Image.FromFile("image.jpg");
             //byte[] imageBytes = ImageToByteArray(image);
 
@@ -94,6 +75,10 @@ namespace test
 
             //var result = y.Result;
             //Console.WriteLine(result.result[0]);
+            #endregion
+
+
+
         }
     }
 }

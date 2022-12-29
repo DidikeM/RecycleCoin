@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\autoReplyService.proto" />
     <None Remove="Protos\objectDetectionService.proto" />
   </ItemGroup>
 
@@ -23,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Protos\autoReplyService.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\objectDetectionService.proto" GrpcServices="Client" />
   </ItemGroup>
 

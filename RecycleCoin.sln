@@ -21,7 +21,9 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "RecycleCoin.CoinTransferSer
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "RecycleCoin.BlockExplorer", "RecycleCoin.BlockExplorer\RecycleCoin.BlockExplorer.njsproj", "{8BE8CA67-02DB-4690-9B36-F6ED133695F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleCoin.Test", "RecycleCoin.Test\RecycleCoin.Test.csproj", "{8290EC75-CACB-450A-A296-521F1A0057B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecycleCoin.Test", "RecycleCoin.Test\RecycleCoin.Test.csproj", "{8290EC75-CACB-450A-A296-521F1A0057B4}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "RecycleCoin.QuestionReplyService", "RecycleCoin.QuestionReplyService\RecycleCoin.QuestionReplyService.pyproj", "{9BCAA673-5320-4DE4-AA6D-33E6130EBD91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,8 @@ Global
 		{8290EC75-CACB-450A-A296-521F1A0057B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8290EC75-CACB-450A-A296-521F1A0057B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8290EC75-CACB-450A-A296-521F1A0057B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BCAA673-5320-4DE4-AA6D-33E6130EBD91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BCAA673-5320-4DE4-AA6D-33E6130EBD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

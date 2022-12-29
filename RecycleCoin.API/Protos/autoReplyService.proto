@@ -1,0 +1,13 @@
+syntax = "proto3";
+package autoReplyService;
+
+service QuestionReplyer {
+    rpc replyQuestion (Question) returns (Reply);
+}
+message Question{
+    string questionMessage = 1;
+    string userApiKey = 2;
+}
+message Reply{
+    string replyMessage = 1;
+}
