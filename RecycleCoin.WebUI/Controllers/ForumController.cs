@@ -7,6 +7,8 @@ using RecycleCoin.WebUI.Models;
 using System.Dynamic;
 using System.Security.Claims;
 using X.PagedList;
+using RecycleCoin.API.Concrete;
+using AutoReplyService;
 
 namespace RecycleCoin.WebUI.Controllers
 {
@@ -58,7 +60,7 @@ namespace RecycleCoin.WebUI.Controllers
             ClaimsPrincipal principal = HttpContext.User as ClaimsPrincipal;
             if (null != principal)
             {
-                _replyService.AddReply(new Reply
+                _replyService.AddReply(new Entities.Concrete.EntityFramework.Reply
                 {
                     TopicId = topicid,
                     Text = text,
@@ -68,7 +70,7 @@ namespace RecycleCoin.WebUI.Controllers
             //ViewBag.TopicModel = GetTopic(topicid);
             dynamic model = new ExpandoObject();
             model.topic = GetTopic(topicid);
-            model.replis = model.topic.Replis;
+            model.replies = model.topic.Replies;
             return View(model);
         }
 
@@ -79,7 +81,7 @@ namespace RecycleCoin.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateTopic(string title, string text)
+        public async Task<IActionResult> CreateTopic(string title, string text, bool activateBot)
         {
             ClaimsPrincipal principal = HttpContext.User as ClaimsPrincipal;
             Topic topic = new Topic
@@ -90,6 +92,16 @@ namespace RecycleCoin.WebUI.Controllers
                 UserId = Convert.ToInt32(principal.Claims.Where(p => p.Type == "id").FirstOrDefault()!.Value)
             };
             _topicService.AddTopic(topic);
+            string userApi = "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";
+            var response = await AutoReplyServices.ReplyQuestion(text, userApi);
+
+            _replyService.AddReply(new Entities.Concrete.EntityFramework.Reply
+            {
+                TopicId = topic.Id,
+                Text = response,
+                UserId = 4337
+            });
+
             return RedirectToAction("Topic", "Forum", topic);
         }
 
@@ -104,9 +116,9 @@ namespace RecycleCoin.WebUI.Controllers
                 Title = topic.Title,
                 UserId = topic.UserId
             };
-            List<Reply> replies = _replyService.GetByTopicId(topic.Id);
+            List<Entities.Concrete.EntityFramework.Reply> replies = _replyService.GetByTopicId(topic.Id);
 
-            foreach (Reply reply in replies)
+            foreach (Entities.Concrete.EntityFramework.Reply reply in replies)
             {
                 topicModel.Replies.Add(new ReplyModel
                 {

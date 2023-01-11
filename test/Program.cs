@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using RecycleCoin.API.Concrete;
-
+Thread.Sleep(3000);
 
 string question = "How to become an software engineer";
 string userApi = "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";
